@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nash Company - Streetwear & Lifestyle</title>
+    
+    <meta name="description" content="Descubra os drops exclusivos da Nash Company. Roupas streetwear autênticas, design e lifestyle. Compre online.">
+    <link rel="canonical" href="https://www.nashcompany.com.br" /> 
+    <meta property="og:title" content="Nash Company - Streetwear & Lifestyle" />
+    <meta property="og:description" content="Drops exclusivos de streetwear. Design, cultura e lifestyle." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.nashcompany.com.br" />
+    <meta property="og:image" content="https://www.nashcompany.com.br/photo-1.jpg" /> 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nash Company - Streetwear & Lifestyle" />
+    <meta name="twitter:description" content="Drops exclusivos de streetwear. Design, cultura e lifestyle." />
+    <meta name="twitter:image" content="https://www.nashcompany.com.br/photo-1.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        /* --- Reset Básico e Configurações Globais --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+        
+        /* 1. ADICIONADO: Estilos do Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+            opacity: 1;
+            visibility: visible;
+        }
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .preloader img {
+            width: 100px; /* Ajuste o tamanho do seu logo/animação */
+            height: auto;
+            animation: pulseLogo 1.5s infinite ease-in-out;
+        }
+        @keyframes pulseLogo {
+            0% { opacity: 0.7; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.7; transform: scale(0.95); }
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        a:hover {
+            opacity: 0.7;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            width: 100%;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 1.8rem; 
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 40px; 
+            letter-spacing: 0.5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Animações (Keyframes) --- */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideIn { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+        
+        /* --- Animação de Scroll --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- Barra Superior (Marquee) --- */
+        .top-bar {
+            background-color: #000;
+            color: #aaa; 
+            padding: 10px 0;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-bottom: 1px solid #222;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee-content span { margin: 0 25px; }
+
+        /* --- CABEÇALHO --- */
+        .main-header {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.7s ease-out;
+            border-bottom: 1px solid #222;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .header-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .header-logo .logo-img {
+            height: 55px; 
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .header-logo:hover .logo-img { transform: scale(1.05); }
+
+        .desktop-nav {
+            display: none; 
+        }
+        
+        .desktop-nav nav {
+            display: flex;
+            gap: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .icon-button:hover { 
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+        .icon-button .icon { width: 26px; height: 26px; }
+
+        .cart-badge {
+            position: absolute;
+            top: -4px;
+            right: -6px;
+            background-color: #fff;
+            color: #000;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            /* 2. ADICIONADO: Transição para o contador */
+            transition: transform 0.2s ease;
+            transform: scale(1);
+        }
+        .cart-badge.updated {
+            transform: scale(1.3);
+        }
+        
+        #menu-toggle { display: none; } 
+        .hamburger-menu {
+            display: block; 
+            cursor: pointer;
+            z-index: 1001; /* Para ficar acima do menu mobile */
+        }
+        .hamburger-menu .icon { width: 28px; height: 28px; }
+
+        /* 3. ADICIONADO: Estilos do Menu Mobile Funcional */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%; /* Começa fora da tela */
+            width: 100%;
+            height: 100vh;
+            background-color: #000;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .mobile-nav.open {
+            left: 0;
+        }
+        .mobile-nav a {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* --- Carrossel Principal --- */
+        .hero-carousel {
+            width: 100%;
+            height: 85vh; 
+            min-height: 500px;
+            animation: fadeIn 1.5s ease-out;
+            background: #050505;
+        }
+        .hero-carousel .swiper { width: 100%; height: 100%; }
+        .hero-carousel .swiper-slide {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-carousel .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+        .hero-carousel .swiper-button-next,
+        .hero-carousel .swiper-button-prev {
+            color: #fff;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        .hero-carousel .swiper-button-next:hover,
+        .hero-carousel .swiper-button-prev:hover {
+            opacity: 1;
+        }
+        .hero-carousel .swiper-pagination-bullet { background: rgba(255, 255, 255, 0.5); }
+        .hero-carousel .swiper-pagination-bullet-active { background: #fff; }
+
+        /* --- Barra de Confiança --- */
+        .info-bar {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px;
+            padding: 50px 20px;
+            border-bottom: 1px solid #222;
+        }
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+        .info-item:hover { transform: translateY(-5px); }
+        .info-item .icon { width: 32px; height: 32px; stroke: #fff; stroke-width: 1.5; }
+        .info-item h3 { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
+
+        /* --- Grade de Produtos --- */
+        .product-grid {
+            padding: 70px 0;
+        }
+        .product-grid .grid-container {
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #0a0a0a;
+            border: 1px solid #222;
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        .product-card img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .product-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .product-card .price {
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 15px;
+        }
+        
+        /* 4. ADICIONADO: Estilos para Opções de Produto */
+        .product-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .product-options label {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .color-swatches {
+            display: flex;
+            gap: 8px;
+        }
+        .color-swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #555;
+            cursor: pointer;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .color-swatch:hover {
+            border-color: #999;
+        }
+        .color-swatch.active {
+            border-color: #fff;
+            transform: scale(1.1);
+        }
+        .size-select {
+            background-color: #111;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 8px 10px;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .size-select:focus {
+            outline: none;
+            border-color: #fff;
+        }
+
+        .add-to-cart-btn {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 10px 25px;
+            width: 100%; /* Ocupa a largura toda */
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            border: none;
+            cursor: pointer;
+        }
+        .add-to-cart-btn:hover {
+            background: #ccc;
+            transform: scale(1.02); 
+        }
+
+        /* --- Depoimentos --- */
+        .section-title-bar {
+            padding: 20px;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            background-color: #0a0a0a;
+        }
+        .testimonial-slider {
+            background-color: #000;
+            color: #fff;
+            padding: 70px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .testimonial-slider .quote-icon { font-size: 3rem; font-family: serif; line-height: 1; margin-bottom: 20px; color: #555; }
+        .testimonial-slider .slide-container { position: relative; min-height: 100px; }
+        .testimonial-slider .slide { display: none; flex-direction: column; align-items: center; justify-content: center; position: absolute; width: 100%; top: 0; left: 0; animation: fadeIn 0.5s ease; }
+        .testimonial-slider .slide.active { display: flex; }
+        .testimonial-slider .slide-text { font-size: 1.1rem; font-style: italic; margin-bottom: 15px; max-width: 600px; line-height: 1.6; }
+        .testimonial-slider .slide-author { font-size: 0.9rem; font-weight: 600; color: #aaa; text-transform: uppercase; }
+        .testimonial-slider .slider-nav-bottom { display: flex; justify-content: center; gap: 40px; margin-top: 30px; }
+        
+        /* --- Seção Instagram --- */
+        .instagram-section {
+            padding: 70px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+        .instagram-section .insta-handle { font-size: 1.1rem; font-weight: 600; color: #aaa; margin-bottom: 25px; font-family: 'Inter', sans-serif; }
+        .instagram-button { display: inline-block; background: #fff; color: #000; padding: 12px 30px; text-decoration: none; font-weight: 700; text-transform: uppercase; transition: all 0.3s ease; font-size: 0.9rem; font-family: 'Poppins', sans-serif; border: none; cursor: pointer; }
+        .instagram-button:hover { background: #ccc; transform: scale(1.05); }
+
+        /* --- Rodapé --- */
+        .main-footer {
+            padding: 70px 0 30px 0;
+            border-top: 1px solid #222;
+        }
+        .footer-content { text-align: center; }
+        .footer-links { display: flex; flex-direction: column; gap: 15px; margin-bottom: 40px; font-size: 1rem; font-weight: 600; }
+        .footer-links a { position: relative; padding-bottom: 5px; transition: opacity 0.3s ease; }
+        .footer-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 1px; background-color: #fff; transition: width 0.3s ease-out; }
+        .footer-links a:hover { opacity: 1; }
+        .footer-links a:hover::after { width: 100%; }
+        .footer-socials { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
+        .footer-socials .social-icon { color: #fff; opacity: 0.7; transition: opacity 0.3s ease, transform 0.3s ease; }
+        .footer-socials .social-icon:hover { opacity: 1; transform: scale(1.1); }
+        .footer-socials .social-icon .icon { width: 28px; height: 28px; fill: currentColor; }
+        .footer-newsletter { margin-bottom: 40px; }
+        .newsletter-form { display: flex; border: 1px solid #555; max-width: 400px; margin: 0 auto; overflow: hidden; }
+        .newsletter-input { flex: 1; background: none; border: none; color: #fff; padding: 12px 15px; font-size: 0.9rem; font-family: 'Inter', sans-serif; }
+        .newsletter-input::placeholder { color: #888; }
+        .newsletter-input:focus { outline: none; background: #111; }
+        .newsletter-submit { display: inline-block; background: #fff; color: #000; padding: 12px 20px; font-weight: 700; text-transform: uppercase; transition: all 0.3s ease; font-size: 0.9rem; font-family: 'Poppins', sans-serif; border: none; cursor: pointer; }
+        .newsletter-submit:hover { background: #ccc; }
+        .footer-contact { margin-bottom: 40px; }
+        .footer-contact p { margin-bottom: 10px; font-size: 0.9rem; color: #aaa; font-weight: 600; }
+        .footer-credits { margin-top: 40px; border-top: 1px solid #222; padding-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .copyright { font-size: 0.75rem; color: #777; }
+
+        /* --- Botão Flutuante (WhatsApp) --- */
+        .whatsapp-fab { position: fixed; bottom: 20px; right: 20px; background-color: #25D366; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); z-index: 1000; transition: transform 0.2s ease; animation: slideIn 0.5s ease-out 1s, pulse 2s infinite 1.8s; animation-fill-mode: backwards; }
+        .whatsapp-fab:hover { transform: scale(1.1); animation-play-state: paused; }
+        .whatsapp-fab .icon { width: 28px; height: 28px; fill: #fff; }
+        
+        /* 5. ADICIONADO: Estilos do Mini-Carrinho */
+        .mini-cart {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Começa fora da tela */
+            width: 100%;
+            max-width: 380px;
+            height: 100vh;
+            background-color: #0a0a0a;
+            border-left: 1px solid #222;
+            z-index: 1002;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        .mini-cart.open {
+            right: 0;
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #222;
+        }
+        .cart-header h3 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+        #close-cart-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+        }
+        #cart-items-container {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .cart-item-img {
+            width: 80px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid #222;
+        }
+        .cart-item-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-item-details h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .cart-item-meta {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+        .cart-item-price {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .cart-item-remove-btn {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 0;
+            text-align: left;
+            margin-top: auto;
+        }
+        .cart-item-remove-btn:hover {
+            color: #fff;
+        }
+        #cart-empty-msg {
+            text-align: center;
+            color: #888;
+            margin-top: 40px;
+        }
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #222;
+        }
+        .cart-subtotal-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #fff;
+            color: #000;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .checkout-btn:hover {
+            background: #ccc;
+        }
+
+        /* --- RESPONSIVO DESKTOP --- */
+        @media (min-width: 769px) {
+            .hamburger-menu {
+                display: none;
+            }
+            .desktop-nav {
+                display: block;
+            }
+            .header-right {
+                gap: 25px; 
+            }
+            .info-bar {
+                grid-template-columns: repeat(4, 1fr); 
+                padding: 70px 20px;
+            }
+            .product-grid .grid-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-links {
+                flex-direction: row;
+                justify-content: center;
+                gap: 30px;
+            }
+            .footer-credits {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%; 
+                align-items: center;
+            }
+            .copyright {
+                text-align: left;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .header-logo .logo-img {
+                height: 60px; 
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="preloader" id="preloader">
+        <img src="logo-nash.png" alt="Carregando Nash Company...">
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="#" class="mobile-nav-link">Início</a>
+        <a href="#produtos" class="mobile-nav-link">Loja</a>
+        <a href="#footer" class="mobile-nav-link">Contato</a>
+    </nav>
+
+    <aside class="mini-cart" id="mini-cart">
+        <div class="cart-header">
+            <h3>Carrinho</h3>
+            <button id="close-cart-btn" aria-label="Fechar carrinho">&times;</button>
+        </div>
+        <div id="cart-items-container">
+            <p id="cart-empty-msg">Seu carrinho está vazio.</p>
+            </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal-line">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal">R$ 0,00</span>
+            </div>
+            <a href="#" class="checkout-btn">Finalizar Compra</a>
+        </div>
+    </aside>
+
+    <div class="top-bar">
+        <div class="marquee-content">
+            <span>COMPRAS ACIMA DE R$150</span>
+            <span>GRUPO VIP</span>
+            <span>FRETE GRÁTIS EM...</span>
+            <span>COMPRAS ACIMA DE R$150</span>
+            <span>GRUPO VIP</span>
+            <span>FRETE GRÁTIS EM...</span>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-container">
+            
+            <div class="header-left">
+                <button class="hamburger-menu" id="hamburger-btn" aria-label="Abrir menu">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                
+                <button class="icon-button" aria-label="Buscar">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="header-center">
+                <a href="/" class="header-logo" aria-label="Página inicial da Nash Company">
+                    <img src="logo-nash.png" alt="Logo da Nash Company" class="logo-img">
+                </a>
+            </div>
+            
+            <div class="header-right">
+                <div class="desktop-nav">
+                    <nav aria-label="Navegação principal">
+                        <a href="#">Início</a>
+                        <a href="#produtos">Loja</a>
+                    </nav>
+                </div>
+                
+                <button class="icon-button" id="cart-icon-btn" aria-label="Ver carrinho">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 10H6L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </button>
+            </div>
+            
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="hero-carousel reveal">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="photo-1.jpg" alt="Bastidores de um photoshoot de streetwear com arara de roupas"></div>
+                    <div class="swiper-slide"><img src="photo-2.jpg" alt="Camiseta branca 'CEO of My Own Business' sobre o capô de um carro esportivo preto"></div>
+                    <div class="swiper-slide"><img src="photo-3.jpg" alt="Modelo deitado no chão com camiseta preta 'Strange Studio'"></div>
+                    <div class="swiper-slide"><img src="photo-4.jpg" alt="Pessoa tirando foto de um moletom preto e tênis azul com um celular"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev" aria-label="Slide anterior"></div>
+                <div class="swiper-button-next" aria-label="Próximo slide"></div>
+            </div>
+        </section>
+
+        <section class="info-bar reveal">
+            <div class="info-item">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de caminhão">
+                    <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h8a1 1 0 001-1zM3 11h10M13 6l-4 4h-6M13 6h5a1 1 0 011 1v4" />
+                </svg>
+                <h3>Meios de envio</h3>
+            </div>
+            <div class="info-item">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de cartão de crédito">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+                <h3>Meios de pagamento</h3>
+            </div>
+            <div class="info-item">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de etiqueta de preço">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-5 5a2 2 0 01-2.828 0l-7-7A2 2 0 013 8V5a2 2 0 012-2h2z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 5h.01" />
+                </svg>
+                <h3>Promoções</h3>
+            </div>
+            <div class="info-item">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de troca">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m-15.357-2a8.001 8.001 0 0015.357 2m0 0H15" />
+                </svg>
+                <h3>Trocas e devoluções</h3>
+            </div>
+        </section>
+
+        <div class="section-title-bar reveal">
+            <div class="container">
+                <h2 style="margin-bottom: 0;">Depoimentos</h2>
+            </div>
+        </div>
+
+        <section class="testimonial-slider reveal">
+            <div class="quote-icon">&ldquo;</div>
+            <div class="slide-container">
+                <div class="slide active">
+                    <p class="slide-text">Produto de alta qualidade e entrega muito rápida. O material é excelente e superou minhas expectativas!</p>
+                    <p class="slide-author">Cliente Satisfeito</p>
+                </div>
+                <div class="slide">
+                    <p class="slide-text">O caimento das peças é perfeito, virei fã. Já é minha segunda compra e com certeza comprarei de novo.</p>
+                    <p class="slide-author">Comprador Verificado</p>
+                </div>
+            </div>
+            <div class="slider-nav-bottom">
+                <button class="slider-arrow testimonial-prev-btn" aria-label="Depoimento anterior">&larr;</button>
+                <button class="slider-arrow testimonial-next-btn" aria-label="Próximo depoimento">&rarr;</button>
+            </div>
+        </section>
+
+        <section id="produtos" class="product-grid reveal">
+            <div class="container">
+                <h2>Nossos Produtos</h2>
+                <div class="grid-container">
+                    
+                    <div class="product-card" data-id="1" data-name="Camisa Lisa" data-price="60.00" data-img="camisa-lisa.webp">
+                        <img src="camisa-lisa.webp" alt="Foto do produto Camisa Lisa">
+                        <h3>Camisa Lisa</h3>
+                        <p class="price">R$ 60,00</p>
+                        
+                        <div class="product-options">
+                            <div>
+                                <label for="color-1">Cor:</label>
+                                <div class="color-swatches" id="color-1">
+                                    <button class="color-swatch active" style="background-color: #ffffff;" data-color="Branca" aria-label="Cor Branca"></button>
+                                    <button class="color-swatch" style="background-color: #000000;" data-color="Preta" aria-label="Cor Preta"></button>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="size-1">Tamanho:</label>
+                                <select class="size-select" id="size-1">
+                                    <option value="P">P</option>
+                                    <option value="M">M</option>
+                                    <option value="G">G</option>
+                                    <option value="XG">XG</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="product-card" data-id="2" data-name="Camisa Estampada" data-price="79.99" data-img="camisa-estampada.jpeg">
+                        <img src="camisa-estampada.jpeg" alt="Foto do produto Camisa Estampada">
+                        <h3>Camisa Estampada</h3>
+                        <p class="price">R$ 79,99</p>
+
+                        <div class="product-options">
+                            <div>
+                                <label for="color-2">Cor:</label>
+                                <div class="color-swatches" id="color-2">
+                                    <button class="color-swatch active" style="background-color: #000000;" data-color="Preta" aria-label="Cor Preta"></button>
+                                    <button class="color-swatch" style="background-color: #f0f0f0;" data-color="Cinza Mescla" aria-label="Cor Cinza Mescla"></button>
+                                    <button class="color-swatch" style="background-color: #003366;" data-color="Azul Marinho" aria-label="Cor Azul Marinho"></button>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="size-2">Tamanho:</label>
+                                <select class="size-select" id="size-2">
+                                    <option value="P">P</option>
+                                    <option value="M">M</option>
+                                    <option value="G">G</option>
+                                    <option value="XG">XG</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="instagram-section reveal">
+            <div class="container">
+                <h2>Siga-nos no Instagram</h2>
+                <p class="insta-handle">@nashcompany.br</p>
+                <a href="https://www.instagram.com/nashcompany.br" target="_blank" rel="noopener noreferrer" class="instagram-button">
+                    Ver Perfil
+                </a>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="main-footer reveal" id="footer">
+        <div class="footer-content container">
+            <nav class="footer-links" aria-label="Navegação do rodapé">
+                <a href="#">Início</a>
+                <a href="#">Contato</a>
+                <a href="#">Grupo Vip</a>
+            </nav>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/nashcompany.br" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Siga-nos no Instagram">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.667 4.77-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.25-.149-4.77-1.692-4.918-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.668-4.77 4.918-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.441c-3.14 0-3.504.012-4.726.068-2.73.125-3.968 1.36-4.093 4.093-.056 1.222-.068 1.586-.068 4.726s.012 3.504.068 4.726c.125 2.733 1.363 3.968 4.093 4.093 1.222.056 1.586.068 4.726.068s3.504-.012 4.726-.068c2.73-.125 3.968-1.36 4.093-4.093.056-1.222.068-1.586.068-4.726s-.012-3.504-.068-4.726c-.125-2.733-1.363-3.968-4.093-4.093-1.222-.056-1.586-.068-4.726-.068zM12 6.864c-2.838 0-5.136 2.298-5.136 5.136s2.298 5.136 5.136 5.136 5.136-2.298 5.136-5.136S14.838 6.864 12 6.864zm0 8.842c-2.045 0-3.706-1.66-3.706-3.706s1.66-3.706 3.706-3.706 3.706 1.66 3.706 3.706-1.66 3.706-3.706 3.706zm4.864-8.541c-.742 0-1.344.602-1.344 1.344s.602 1.344 1.344 1.344 1.344-.602 1.344-1.344-.602-1.344-1.344-1.344z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="footer-newsletter">
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Assine nossa newsletter..." required aria-label="Email para newsletter">
+                    <button type="submit" class="newsletter-submit">Enviar</button>
+                </form>
+            </div>
+
+            <div class="footer-contact">
+                <p>5571988689508</p>
+                <p>nashcompany001@gmail.com</p>
+            </div>
+
+            <div class="footer-credits">
+                <p class="copyright">Copyright NASH COMPANY - 2025. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5571988689508" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Entrar em contato via WhatsApp">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.06 21.94L7.31 20.55C8.76 21.36 10.37 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 6.45 17.5 2 12.04 2M17.26 14.23C17.06 14.73 16.03 15.28 15.5 15.36C15.02 15.43 14.39 15.45 14.06 15.3C13.73 15.15 13.2 14.95 12.56 14.31C11.76 13.51 11.23 12.56 11.03 12.26C10.83 11.96 10.72 11.81 10.72 11.61C10.72 11.41 10.87 11.26 11.02 11.11C11.17 10.96 11.34 10.85 11.52 10.7C11.69 10.55 11.79 10.45 11.94 10.2C12.09 9.95 12.14 9.77 12.04 9.62C11.94 9.47 11.44 8.24 11.21 7.74C10.98 7.24 10.76 7.31 10.61 7.31C10.46 7.31 10.31 7.31 10.16 7.31C10.01 7.31 9.74 7.39 9.51 7.64C9.28 7.89 8.78 8.34 8.78 9.24C8.78 10.14 9.54 11.01 9.69 11.21C9.84 11.41 11.21 13.71 13.41 14.61C14.33 15.01 14.93 15.21 15.38 15.38C15.98 15.61 16.5 15.58 16.88 15.53C17.31 15.48 18.01 15.08 18.23 14.53C18.46 13.98 18.46 13.51 18.39 13.41C18.31 13.31 18.11 13.21 17.86 13.06C17.61 12.91 17.46 12.86 17.26 13.11C17.06 13.36 16.81 13.66 16.71 13.81C16.61 13.96 16.51 14.03 16.31 13.93C16.11 13.83 15.48 13.63 14.73 12.96C14.12 12.41 13.73 11.71 13.58 11.46C13.43 11.21 13.33 11.01 13.43 10.86C13.53 10.71 13.68 10.56 13.83 10.41C1." />
+        </svg>
+    </a>
+    
+    <input type="checkbox" id="menu-toggle">
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- 1. LÓGICA DO PRELOADER ---
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                // Adiciona um pequeno atraso para a animação ser vista
+                setTimeout(() => {
+                    preloader.classList.add('hidden');
+                }, 500); // 0.5 segundos de delay
+            });
+
+            // --- 2. LÓGICA DO MENU MOBILE ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            hamburgerBtn.addEventListener('click', () => {
+                mobileNav.classList.toggle('open');
+            });
+
+            // Fecha o menu ao clicar em um link
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('open');
+                });
+            });
+
+            // --- 3. LÓGICA DO CARROSSEL SWIPER ---
+            const swiper = new Swiper('.hero-carousel .swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 4000, 
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+
+            // --- 4. LÓGICA DOS DEPOIMENTOS ---
+            const testimonialSlides = document.querySelectorAll('.testimonial-slider .slide');
+            const testimonialNextBtns = document.querySelectorAll('.testimonial-slider .testimonial-next-btn');
+            const testimonialPrevBtns = document.querySelectorAll('.testimonial-slider .testimonial-prev-btn');
+            let testimonialCurrentSlide = 0;
+            const testimonialTotalSlides = testimonialSlides.length;
+
+            function showTestimonialSlide(index) {
+                if (testimonialSlides.length === 0) return;
+                testimonialSlides[testimonialCurrentSlide].classList.remove('active');
+                if (index >= testimonialTotalSlides) testimonialCurrentSlide = 0;
+                else if (index < 0) testimonialCurrentSlide = testimonialTotalSlides - 1;
+                else testimonialCurrentSlide = index;
+                testimonialSlides[testimonialCurrentSlide].classList.add('active');
+            }
+
+            testimonialNextBtns.forEach(btn => btn.addEventListener('click', () => showTestimonialSlide(testimonialCurrentSlide + 1)));
+            testimonialPrevBtns.forEach(btn => btn.addEventListener('click', () => showTestimonialSlide(testimonialCurrentSlide - 1)));
+            
+            if (testimonialSlides.length > 0) {
+                showTestimonialSlide(testimonialCurrentSlide);
+            }
+
+            // --- 5. LÓGICA DAS ANIMAÇÕES DE SCROLL ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 
+            });
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- 6. LÓGICA DE OPÇÕES DE PRODUTO (CORES) ---
+            const allColorSwatchesGroups = document.querySelectorAll('.color-swatches');
+            allColorSwatchesGroups.forEach(group => {
+                const swatches = group.querySelectorAll('.color-swatch');
+                swatches.forEach(swatch => {
+                    swatch.addEventListener('click', () => {
+                        // Remove 'active' de todos os irmãos
+                        swatches.forEach(s => s.classList.remove('active'));
+                        // Adiciona 'active' ao clicado
+                        swatch.classList.add('active');
+                    });
+                });
+            });
+
+            // --- 7. LÓGICA DO CARRINHO DE COMPRAS ---
+            let cart = [];
+            const cartIconBtn = document.getElementById('cart-icon-btn');
+            const miniCart = document.getElementById('mini-cart');
+            const closeCartBtn = document.getElementById('close-cart-btn');
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const cartBadge = document.getElementById('cart-badge');
+            const cartSubtotalEl = document.getElementById('cart-subtotal');
+            const cartEmptyMsg = document.getElementById('cart-empty-msg');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+            // Abrir e Fechar o carrinho
+            cartIconBtn.addEventListener('click', () => miniCart.classList.add('open'));
+            closeCartBtn.addEventListener('click', () => miniCart.classList.remove('open'));
+
+            // Adicionar ao Carrinho
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const card = e.target.closest('.product-card');
+                    
+                    const id = card.dataset.id;
+                    const name = card.dataset.name;
+                    const price = parseFloat(card.dataset.price);
+                    const img = card.dataset.img;
+                    
+                    const selectedColorEl = card.querySelector('.color-swatch.active');
+                    const color = selectedColorEl ? selectedColorEl.dataset.color : 'Padrão';
+                    
+                    const selectedSizeEl = card.querySelector('.size-select');
+                    const size = selectedSizeEl ? selectedSizeEl.value : 'Único';
+
+                    const cartItemId = `${id}-${color}-${size}`; // ID único para o item no carrinho
+
+                    // Verifica se o item já existe
+                    const existingItem = cart.find(item => item.cartItemId === cartItemId);
+
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        cart.push({
+                            cartItemId,
+                            id,
+                            name,
+                            price,
+                            img,
+                            color,
+                            size,
+                            quantity: 1
+                        });
+                    }
+
+                    renderCart();
+                    updateCartBadge();
+                    miniCart.classList.add('open'); // Abre o carrinho ao adicionar
+                });
+            });
+
+            // Remover do Carrinho (usando delegação de evento)
+            cartItemsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('cart-item-remove-btn')) {
+                    const cartItemId = e.target.dataset.cartItemId;
+                    cart = cart.filter(item => item.cartItemId !== cartItemId);
+                    renderCart();
+                    updateCartBadge();
+                }
+            });
+
+            function renderCart() {
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<p id="cart-empty-msg">Seu carrinho está vazio.</p>';
+                    updateSubtotal();
+                    return;
+                }
+
+                cartItemsContainer.innerHTML = ''; // Limpa o carrinho
+                cart.forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.classList.add('cart-item');
+                    itemEl.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p class="cart-item-meta">${item.color} / ${item.size}</p>
+                            <p class="cart-item-price">R$ ${item.price.toFixed(2)} (x${item.quantity})</p>
+                            <button class="cart-item-remove-btn" data-cart-item-id="${item.cartItemId}">Remover</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+                updateSubtotal();
+            }
+
+            function updateSubtotal() {
+                const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+                cartSubtotalEl.textContent = `R$ ${subtotal.toFixed(2)}`;
+            }
+
+            function updateCartBadge() {
+                const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+                cartBadge.textContent = totalItems;
+                
+                // Efeito "pulse" no ícone
+                cartBadge.classList.add('updated');
+                setTimeout(() => {
+                    cartBadge.classList.remove('updated');
+                }, 300);
+            }
+
+        });
+    </script>
+
+</body>
+</html>
