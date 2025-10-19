@@ -581,52 +581,69 @@
         }
 
 
-        /* --- Depoimentos --- */
+        /* --- Depoimentos (REFEITO) --- */
         .testimonial-section {
             padding: 70px 0;
-            background-color: #000;
+            background-color: #0a0a0a; /* Fundo levemente mais claro que o preto total */
             border-top: 1px solid #222;
             border-bottom: 1px solid #222;
         }
         .testimonial-swiper {
-            padding: 20px 20px 50px 20px !important; 
-            overflow: visible; 
+            padding: 0 20px 40px 20px !important; /* Ajuste o padding inferior para a paginação */
+            overflow: hidden; /* Garantir que o carrossel não quebre o layout */
             max-width: 1200px; 
             margin: 0 auto;
         }
         .testimonial-card {
-            background-color: #0a0a0a;
-            border: 1px solid #222;
-            padding: 30px;
+            background-color: #000; /* Fundo escuro para o card */
+            border: 1px solid #333; /* Borda um pouco mais visível */
+            padding: 35px 30px; /* Mais padding */
             text-align: left;
-            height: 100%; 
+            height: auto; /* Deixa o card se ajustar ao conteúdo */
+            min-height: 250px; /* Garante altura mínima visualmente */
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         .testimonial-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.08); /* Sombra mais destacada */
         }
         .testimonial-rating {
-            font-size: 1.2rem;
+            font-size: 1.4rem; /* Estrelas maiores */
             color: #fff;
             margin-bottom: 15px;
+            letter-spacing: 2px;
         }
         .testimonial-text {
             font-size: 1rem;
             font-style: italic;
             line-height: 1.6;
-            color: #ccc;
-            flex-grow: 1; 
-            margin-bottom: 20px;
+            color: #bbb;
+            flex-grow: 1; /* Faz o texto ocupar o espaço necessário */
+            margin-bottom: 25px;
+            position: relative;
+        }
+        /* Adiciona aspas elegantes no topo do depoimento */
+        .testimonial-text::before {
+            content: "“";
+            font-family: serif;
+            font-size: 4rem;
+            color: #333;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            line-height: 1;
         }
         .testimonial-author {
             font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: 700; /* Negrito */
             color: #fff;
             text-transform: uppercase;
             text-align: right;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 10px;
         }
         .testimonial-pagination {
             bottom: 0 !important; 
@@ -637,6 +654,7 @@
         .testimonial-pagination .swiper-pagination-bullet-active {
             background: #fff;
         }
+
 
         /* --- Seção Instagram --- */
         .instagram-section {
@@ -999,11 +1017,21 @@
             margin-bottom: 5px;
         }
 
-        /* AJUSTE PARA DESKTOP */
+        /* AJUSTE PARA DESKTOP E SWIPER */
         @media (min-width: 769px) {
             .modal-content {
                 width: 80%;
                 max-width: 650px;
+            }
+            .testimonial-swiper {
+                padding: 0 0 50px 0 !important; /* Remove padding lateral no desktop */
+            }
+            .testimonial-card {
+                 min-height: 300px; /* Mais alto no desktop */
+            }
+            .testimonial-text::before {
+                top: -30px;
+                left: 0;
             }
 
             /* [O restante dos estilos desktop permanece igual ou foi integrado acima] */
@@ -1255,6 +1283,13 @@
                                 <div class="testimonial-rating">★★★★★</div>
                                 <p class="testimonial-text">"Finalmente uma marca com uma história forte e que traduz essa inspiração cultural com o respeito e a beleza que merece. O design é impecável."</p>
                                 <p class="testimonial-author">- Lucas S., Rio de Janeiro-RJ</p>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">★★★★★</div>
+                                <p class="testimonial-text">"Estou impressionado com a atenção aos detalhes. A costura é perfeita e a camiseta tem um toque super macio. Recomendo demais!"</p>
+                                <p class="testimonial-author">- Pedro A., Curitiba-PR</p>
                             </div>
                         </div>
 
@@ -1550,7 +1585,7 @@
                 },
             });
 
-            // --- 4. LÓGICA DO CARROSSEL DE DEPOIMENTOS ---
+            // --- 4. LÓGICA DO CARROSSEL DE DEPOIMENTOS (BREAKPOINTS AJUSTADOS) ---
             const testimonialSwiper = new Swiper('.testimonial-swiper', {
                 loop: true,
                 autoplay: {
@@ -1561,11 +1596,11 @@
                     el: '.testimonial-pagination',
                     clickable: true,
                 },
-                slidesPerView: 1,
+                slidesPerView: 1, // 1 slide no mobile
                 spaceBetween: 20,
                 breakpoints: {
                     769: {
-                        slidesPerView: 2,
+                        slidesPerView: 2, // 2 slides no desktop
                         spaceBetween: 30
                     }
                 }
