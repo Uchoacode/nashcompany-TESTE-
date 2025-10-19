@@ -24,8 +24,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
-        /* [Seção de estilos CSS omitida para brevidade, pois não houve alteração nela. Considerar o CSS original fornecido.] */
-
         /* --- Reset Básico e Configurações Globais --- */
         * {
             margin: 0;
@@ -921,7 +919,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95); /* Deixando mais escuro */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -938,16 +936,16 @@
             background-color: #0a0a0a;
             border: 1px solid #222;
             padding: 30px;
-            width: 90%;
+            width: 95%; /* Maior largura no mobile */
             max-width: 600px;
-            max-height: 90vh;
+            max-height: 95vh; /* Maior altura no mobile */
             overflow-y: auto;
             position: relative;
-            transform: translateY(20px);
+            transform: scale(0.9); /* Adiciona pequena animação de entrada */
             transition: transform 0.3s ease;
         }
         .modal-overlay.active .modal-content {
-            transform: translateY(0);
+            transform: scale(1); /* Abre com escala normal */
         }
         .modal-content h3 {
             font-size: 1.5rem;
@@ -957,14 +955,23 @@
             border-bottom: 2px solid #555;
             padding-bottom: 10px;
         }
+        .modal-content h4 { /* Estilo para os subtítulos dentro dos modais */
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
         .modal-content p, .modal-content ul {
             font-size: 0.95rem;
             line-height: 1.6;
             color: #ccc;
             margin-bottom: 15px;
         }
+        /* CORREÇÃO DO NEGRITO: Garante que <strong> seja negrito e branco dentro dos modais */
         .modal-content strong {
             color: #fff;
+            font-weight: 700; 
         }
         .modal-close-btn {
             position: absolute;
@@ -979,6 +986,7 @@
             padding: 5px;
             opacity: 0.7;
             transition: opacity 0.2s ease;
+            z-index: 10; /* Garante que fique acima do conteúdo */
         }
         .modal-close-btn:hover {
             opacity: 1;
@@ -987,9 +995,18 @@
             padding-left: 20px;
             list-style: disc;
         }
+        .modal-content ul li {
+            margin-bottom: 5px;
+        }
 
-        /* --- RESPONSIVO DESKTOP (Ajustes) --- */
+        /* AJUSTE PARA DESKTOP */
         @media (min-width: 769px) {
+            .modal-content {
+                width: 80%;
+                max-width: 650px;
+            }
+
+            /* [O restante dos estilos desktop permanece igual ou foi integrado acima] */
             .hamburger-menu {
                 display: none; /* Esconde o sanduíche no desktop */
             }
@@ -1049,7 +1066,6 @@
                 height: 60px; 
             }
         }
-
     </style>
 </head>
 <body>
@@ -1198,13 +1214,13 @@
                 <div class="about-content">
                     <h2>Nossa Essência</h2>
                     <p>
-                        A NASH COMPANY foi **fundada em Salvador**, a cidade da nossa origem. Nossa inspiração nasce da **essência única** desta capital, que nos fornece uma riqueza visual inesgotável.
+                        A NASH COMPANY foi <strong>fundada em Salvador</strong>, a cidade da nossa origem. Nossa inspiração nasce da <strong>essência única</strong> desta capital, que nos fornece uma riqueza visual inesgotável.
                     </p>
                     <p>
-                        Utilizamos elementos de nossa terra — como as paletas de cores, a flora exuberante e as paisagens únicas — para criar peças de **alto padrão**. Traduzimos essa inspiração em silhuetas e designs que são, simultaneamente, contemporâneos e **atemporais**.
+                        Utilizamos elementos de nossa terra — como as paletas de cores, a flora exuberante e as paisagens únicas — para criar peças de <strong>alto padrão</strong>. Traduzimos essa inspiração em silhuetas e designs que são, simultaneamente, contemporâneos e <strong>atemporais</strong>.
                     </p>
                     <p>
-                        Cada design tem um propósito: celebrar a beleza de Salvador com **elegância e minimalismo**. A NASH não é apenas roupa. É uma afirmação de identidade e design sofisticado.
+                        Cada design tem um propósito: celebrar a beleza de Salvador com <strong>elegância e minimalismo</strong>. A NASH não é apenas roupa. É uma afirmação de identidade e design sofisticado.
                     </p>
                     <a href="#produtos" class="cta-button">Ver a Coleção</a>
                 </div>
@@ -1385,13 +1401,13 @@
         <div class="modal-content">
             <button class="modal-close-btn">&times;</button>
             <h3>🚚 Entregas e Frete</h3>
-            <p>Por estarmos sediados em **Salvador-BA**, nosso processo de logística é customizado para garantir a melhor experiência para você:</p>
+            <p>Por estarmos sediados em <strong>Salvador-BA</strong>, nosso processo de logística é customizado para garantir a melhor experiência para você:</p>
 
             <h4>Compradores de Salvador:</h4>
-            <p>Após a finalização do pagamento (via Mercado Pago), seu pedido será automaticamente direcionado para o nosso **WhatsApp**. Entraremos em contato imediatamente para combinar a forma de entrega, que será:
+            <p>Após a finalização do pagamento (via Mercado Pago), seu pedido será automaticamente direcionado para o nosso <strong>WhatsApp</strong>. Entraremos em contato imediatamente para combinar a forma de entrega, que será:
             <ul>
-                <li>**Entrega rápida e personalizada** na região de Salvador.</li>
-                <li>Frete Grátis em compras acima de R$199.</li>
+                <li><strong>Entrega rápida e personalizada</strong> na região de Salvador.</li>
+                <li>Frete Grátis em compras <strong>acima de R$199</strong>.</li>
             </ul></p>
             
             <h4>Outras Regiões (Fora de Salvador):</h4>
@@ -1403,12 +1419,12 @@
         <div class="modal-content">
             <button class="modal-close-btn">&times;</button>
             <h3>💳 Pague Como Preferir</h3>
-            <p>Garantimos a segurança total de suas transações através da plataforma **Mercado Pago**.</p>
+            <p>Garantimos a segurança total de suas transações através da plataforma <strong>Mercado Pago</strong>.</p>
             <p>Você pode pagar com:</p>
             <ul>
-                <li>**Cartão de Crédito:** Parcelamento em até 12x (com ou sem juros, dependendo do valor).</li>
-                <li>**Boleto Bancário.**</li>
-                <li>**Pix:** Confirmação imediata do pedido.</li>
+                <li><strong>Cartão de Crédito:</strong> Parcelamento em até 12x (com ou sem juros, dependendo do valor).</li>
+                <li><strong>Boleto Bancário.</strong></li>
+                <li><strong>Pix:</strong> Confirmação imediata do pedido.</li>
             </ul>
             <p>A confirmação do pagamento é o ponto de partida para a preparação do seu pedido e o contato via WhatsApp para agilizar o envio.</p>
         </div>
@@ -1421,12 +1437,12 @@
             <p>NASH COMPANY garante a satisfação do cliente. Se precisar trocar ou devolver seu produto, o processo é simples:</p>
             
             <h4>Condições de Troca:</h4>
-            <p>O prazo para solicitar a troca ou devolução é de **7 (sete) dias corridos** após o recebimento do produto, conforme o Código de Defesa do Consumidor.</p>
+            <p>O prazo para solicitar a troca ou devolução é de <strong>7 (sete) dias corridos</strong> após o recebimento do produto, conforme o Código de Defesa do Consumidor.</p>
             <ul>
-                <li>O produto deve estar sem sinais de uso, com todas as etiquetas e embalagem original.</li>
-                <li>O frete da primeira troca por tamanho ou defeito será por nossa conta.</li>
+                <li>O produto deve estar <strong>sem sinais de uso</strong>, com todas as etiquetas e embalagem original.</li>
+                <li>O frete da primeira troca por tamanho ou defeito será <strong>por nossa conta</strong>.</li>
             </ul>
-            <p>Para iniciar o processo, envie um e-mail para **nashcompany001@gmail.com** ou contate-nos via WhatsApp.</p>
+            <p>Para iniciar o processo, envie um e-mail para <strong>nashcompany001@gmail.com</strong> ou contate-nos via WhatsApp.</p>
         </div>
     </div>
 
@@ -1436,16 +1452,16 @@
             <h3>❓ Perguntas Frequentes (FAQ)</h3>
             
             <h4>Qual o Prazo de Envio (Entrega)?</h4>
-            <p>O prazo padrão de envio (separação + postagem) é de **até 10 dias úteis** após a confirmação do pagamento. Após o envio, o tempo de entrega dependerá da sua localização e do método de envio escolhido. Para Salvador, este prazo é geralmente muito menor, pois combinamos a entrega via WhatsApp.</p>
+            <p>O prazo padrão de envio (separação + postagem) é de <strong>até 10 dias úteis</strong> após a confirmação do pagamento. Após o envio, o tempo de entrega dependerá da sua localização e do método de envio escolhido. Para Salvador, este prazo é geralmente muito menor, pois combinamos a entrega via WhatsApp.</p>
             
             <h4>Como serei notificado sobre o meu pedido?</h4>
-            <p>Após a aprovação do pagamento, você será contatado pela nossa equipe via **WhatsApp** para confirmar os dados e informar sobre a preparação e envio da sua peça.</p>
+            <p>Após a aprovação do pagamento, você será contatado pela nossa equipe via <strong>WhatsApp</strong> para confirmar os dados e informar sobre a preparação e envio da sua peça.</p>
 
             <h4>O site é seguro?</h4>
-            <p>Sim. Utilizamos criptografia SSL e todas as transações de pagamento são processadas pelo **Mercado Pago**, garantindo a segurança dos seus dados financeiros.</p>
+            <p>Sim. Utilizamos criptografia SSL e todas as transações de pagamento são processadas pelo <strong>Mercado Pago</strong>, garantindo a segurança dos seus dados financeiros.</p>
             
             <h4>Vocês enviam para todo o Brasil?</h4>
-            <p>Sim! Enviamos para todo o Brasil. Compradores de Salvador têm um canal de comunicação direta (WhatsApp) para agilizar o processo.</p>
+            <p>Sim! Enviamos para <strong>todo o Brasil</strong>. Compradores de Salvador têm um canal de comunicação direta (WhatsApp) para agilizar o processo.</p>
         </div>
     </div>
 
@@ -1456,13 +1472,13 @@
             <p>Estes Termos de Uso regem a utilização da loja virtual NASH COMPANY. Ao realizar uma compra, você concorda com todas as cláusulas aqui descritas.</p>
 
             <h4>1. Uso do Site</h4>
-            <p>O usuário se compromete a utilizar o site de forma lícita, seguindo as diretrizes e respeitando os direitos de propriedade intelectual da NASH COMPANY.</p>
+            <p>O usuário se compromete a utilizar o site de forma lícita, seguindo as diretrizes e respeitando os <strong>direitos de propriedade intelectual</strong> da NASH COMPANY.</p>
 
             <h4>2. Preços e Estoque</h4>
-            <p>Os preços dos produtos estão sujeitos a alterações sem aviso prévio. A disponibilidade em estoque é atualizada constantemente, mas não garantimos que um item visto estará sempre disponível, devido à natureza exclusiva de algumas peças.</p>
+            <p>Os preços dos produtos estão sujeitos a alterações sem aviso prévio. A disponibilidade em estoque é atualizada constantemente, mas não garantimos que um item visto estará sempre disponível, devido à <strong>natureza exclusiva</strong> de algumas peças.</p>
 
             <h4>3. Responsabilidade</h4>
-            <p>A NASH COMPANY não se responsabiliza por mau uso dos produtos ou por informações incorretas fornecidas pelo cliente no cadastro ou envio. Quaisquer dúvidas devem ser resolvidas via canais de atendimento antes da compra.</p>
+            <p>A NASH COMPANY não se responsabiliza por mau uso dos produtos ou por informações incorretas fornecidas pelo cliente no cadastro ou envio. Quaisquer dúvidas devem ser resolvidas via <strong>canais de atendimento</strong> antes da compra.</p>
             <p>Para ler os termos de uso completos, entre em contato.</p>
         </div>
     </div>
@@ -1471,16 +1487,16 @@
         <div class="modal-content">
             <button class="modal-close-btn">&times;</button>
             <h3>🔒 Política de Privacidade (LGPD)</h3>
-            <p>A NASH COMPANY leva a sua privacidade a sério. Seus dados pessoais são tratados com o máximo cuidado, em conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
+            <p>A NASH COMPANY leva a sua privacidade a sério. Seus dados pessoais são tratados com o <strong>máximo cuidado</strong>, em conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
 
             <h4>1. Coleta de Dados</h4>
-            <p>Coletamos apenas os dados necessários para processar seu pedido (nome, endereço, e-mail e telefone) e garantir o contato via WhatsApp após a compra.</p>
+            <p>Coletamos apenas os dados necessários para processar seu pedido (nome, endereço, e-mail e telefone) e garantir o <strong>contato via WhatsApp</strong> após a compra.</p>
 
             <h4>2. Proteção</h4>
-            <p>Todos os dados são armazenados em servidores seguros e criptografados. As informações de pagamento são tratadas exclusivamente pelo Mercado Pago, sem acesso da loja.</p>
+            <p>Todos os dados são armazenados em <strong>servidores seguros e criptografados</strong>. As informações de pagamento são tratadas exclusivamente pelo Mercado Pago, sem acesso da loja.</p>
 
             <h4>3. Uso de Dados</h4>
-            <p>Seus dados são usados para: processar e enviar pedidos, fornecer suporte e, mediante seu consentimento, enviar promoções e novidades da NASH COMPANY.</p>
+            <p>Seus dados são usados para: processar e enviar pedidos, fornecer suporte e, mediante seu consentimento, enviar <strong>promoções e novidades</strong> da NASH COMPANY.</p>
         </div>
     </div>
 
