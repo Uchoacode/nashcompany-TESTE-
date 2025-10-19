@@ -416,6 +416,11 @@
             max-width: 700px;
             margin: 0 auto 20px auto;
         }
+        /* */
+        .about-content p strong {
+            color: #fff;
+            font-weight: 700;
+        }
         
         /* NOVO BOTÃO CTA (Call to Action) */
         .cta-button {
@@ -1017,7 +1022,63 @@
             margin-bottom: 5px;
         }
 
-        /* AJUSTE PARA DESKTOP E SWIPER */
+        /* --- NOVO: Botão WhatsApp Dentro do Modal --- */
+        .modal-whatsapp-btn {
+            display: block; /* Ocupa a largura toda */
+            background-color: #25D366; /* Cor do WhatsApp */
+            color: #fff;
+            padding: 14px 20px;
+            margin-top: 30px; /* Espaço acima */
+            border-radius: 5px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+        }
+        .modal-whatsapp-btn:hover {
+            background-color: #1EAE54; /* Cor mais escura no hover */
+            transform: scale(1.02);
+            opacity: 1; /* Sobrescreve o 'a:hover' padrão */
+        }
+        /* --- FIM DO NOVO ESTILO --- */
+
+
+        .promo-popup-content {
+            text-align: center;
+            padding-top: 40px; /* Mais espaço para o logo */
+        }
+        .promo-popup-logo {
+            width: 100px;
+            height: auto;
+            margin: 0 auto 20px auto;
+        }
+        .promo-popup-subtitle {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .promo-popup-btn {
+            /* Reutiliza o .cta-button, mas garante que seja o branco */
+            background: #fff;
+            color: #000;
+            margin-top: 25px;
+        }
+        .promo-popup-btn:hover {
+            background: #ccc;
+            color: #000;
+        }
+        .promo-popup-disclaimer {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 15px;
+            display: block;
+        }
+        
+        /* --- AJUSTE PARA DESKTOP E SWIPER --- */
         @media (min-width: 769px) {
             .modal-content {
                 width: 80%;
@@ -1129,10 +1190,10 @@
     <div class="top-bar">
         <div class="marquee-content">
             <span>FRETE GRÁTIS <strong>ACIMA DE R$199</strong></span>
-            <span>ENTRE PARA NOSSO <strong>GRUPO VIP</strong></span>
+            <span><a href="https://chat.whatsapp.com/G7vSR9IVGCfLhUhHiTDv2l" target="_blank" rel="noopener noreferrer">ENTRE PARA NOSSO <strong>GRUPO VIP</strong></a></span>
             <span>ATENDIMENTO EXCLUSIVO NO <strong>WHATSAPP</strong></span>
             <span>FRETE GRÁTIS <strong>ACIMA DE R$199</strong></span>
-            <span>ENTRE PARA NOSSO <strong>GRUPO VIP</strong></span>
+            <span><a href="https://chat.whatsapp.com/G7vSR9IVGCfLhUhHiTDv2l" target="_blank" rel="noopener noreferrer">ENTRE PARA NOSSO <strong>GRUPO VIP</strong></a></span>
             <span>ATENDIMENTO EXCLUSIVO NO <strong>WHATSAPP</strong></span>
         </div>
     </div>
@@ -1240,61 +1301,20 @@
         <section id="sobre-nos" class="about-section reveal">
             <div class="container">
                 <div class="about-content">
-                    <h2>Nossa Essência</h2>
+                    <h2>Nossa História</h2>
                     <p>
-                        A NASH COMPANY foi <strong>fundada em Salvador</strong>, a cidade da nossa origem. Nossa inspiração nasce da <strong>essência única</strong> desta capital, que nos fornece uma riqueza visual inesgotável.
+                        A NASH COMPANY nasceu com uma proposta clara: <strong>revolucionar o mercado de streetwear no Brasil</strong>. Fundada por <strong>Rian Uchôa e João Marcos</strong>, a marca é o resultado de um grande sonho que começou ainda no ensino médio.
                     </p>
                     <p>
-                        Utilizamos elementos de nossa terra como as paletas de cores, a flora exuberante e as paisagens únicas para criar peças de <strong>alto padrão</strong>. Traduzimos essa inspiração em silhuetas e designs que são, simultaneamente, contemporâneos e <strong>atemporais</strong>.
+                        Foram anos planejando, <strong>lapidando cada detalhe</strong> e construindo a fundação em busca de um objetivo: entregar a <strong>melhor qualidade possível</strong>, do design ao material.
                     </p>
                     <p>
-                        Cada design tem um propósito: celebrar a beleza de Salvador com <strong>elegância e minimalismo</strong>. A NASH não é apenas roupa. É uma afirmação de identidade e design sofisticado.
+                        Nossa inspiração vem de casa: <strong>Salvador</strong>. Traduzimos a essência única da nossa capital, as paletas de cores e as paisagens em peças de <strong>alto padrão</strong>, com design contemporâneo e <strong>atemporal</strong>.
+                    </p>
+                    <p>
+                        A NASH não é apenas roupa. É uma afirmação de identidade e design sofisticado.
                     </p>
                     <a href="#produtos" class="cta-button">Ver a Coleção</a>
-                </div>
-            </div>
-        </section>
-        
-        <section class="testimonial-section reveal">
-            <div class="container">
-                <h2>O Que Dizem Nossos Clientes</h2>
-                
-                <div class="swiper testimonial-swiper">
-                    <div class="swiper-wrapper">
-                        
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-                                <div class="testimonial-rating">★★★★★</div>
-                                <p class="testimonial-text">"Produto de alta qualidade e entrega muito rápida. O material é excelente e superou minhas expectativas!"</p>
-                                <p class="testimonial-author">- João P., Salvador-BA</p>
-                            </div>
-                        </div>
-                        
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-                                <div class="testimonial-rating">★★★★★</div>
-                                <p class="testimonial-text">"O caimento das peças é perfeito, virei fã. Já é minha segunda compra e com certeza comprarei de novo."</p>
-                                <p class="testimonial-author">- Maria L., São Paulo-SP</p>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-                                <div class="testimonial-rating">★★★★★</div>
-                                <p class="testimonial-text">"Finalmente uma marca com uma história forte e que traduz essa inspiração cultural com o respeito e a beleza que merece. O design é impecável."</p>
-                                <p class="testimonial-author">- Lucas S., Rio de Janeiro-RJ</p>
-                            </div>
-                        </div>
-                         <div class="swiper-slide">
-                            <div class="testimonial-card">
-                                <div class="testimonial-rating">★★★★★</div>
-                                <p class="testimonial-text">"Estou impressionado com a atenção aos detalhes. A costura é perfeita e a camiseta tem um toque super macio. Recomendo demais!"</p>
-                                <p class="testimonial-author">- Pedro A., Curitiba-PR</p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="swiper-pagination testimonial-pagination"></div>
                 </div>
             </div>
         </section>
@@ -1367,6 +1387,50 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonial-section reveal">
+            <div class="container">
+                <h2>O Que Dizem Nossos Clientes</h2>
+                
+                <div class="swiper testimonial-swiper">
+                    <div class="swiper-wrapper">
+                        
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">★★★★★</div>
+                                <p class="testimonial-text">"Produto de alta qualidade e entrega muito rápida. O material é excelente e superou minhas expectativas!"</p>
+                                <p class="testimonial-author">- João P., Salvador-BA</p>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">★★★★★</div>
+                                <p class="testimonial-text">"O caimento das peças é perfeito, virei fã. Já é minha segunda compra e com certeza comprarei de novo."</p>
+                                <p class="testimonial-author">- Maria L., São Paulo-SP</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">★★★★★</div>
+                                <p class="testimonial-text">"Finalmente uma marca com uma história forte e que traduz essa inspiração cultural com o respeito e a beleza que merece. O design é impecável."</p>
+                                <p class="testimonial-author">- Lucas S., Rio de Janeiro-RJ</p>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">★★★★★</div>
+                                <p class="testimonial-text">"Estou impressionado com a atenção aos detalhes. A costura é perfeita e a camiseta tem um toque super macio. Recomendo demais!"</p>
+                                <p class="testimonial-author">- Pedro A., Curitiba-PR</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination testimonial-pagination"></div>
                 </div>
             </div>
         </section>
@@ -1447,7 +1511,11 @@
             
             <h4>Outras Regiões (Fora de Salvador):</h4>
             <p>Se a sua compra for de fora de Salvador, entraremos em contato via WhatsApp para definir o melhor método de envio, que geralmente será feito pelos Correios (Sedex/PAC) ou transportadoras parceiras, com custos e prazos informados caso a caso.</p>
-        </div>
+            
+            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Entregas%20e%20Frete." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">
+                Falar sobre Entregas
+            </a>
+            </div>
     </div>
 
     <div class="modal-overlay" id="modal-formas-pagamento">
@@ -1462,7 +1530,11 @@
                 <li><strong>Pix:</strong> Confirmação imediata do pedido.</li>
             </ul>
             <p>A confirmação do pagamento é o ponto de partida para a preparação do seu pedido e o contato via WhatsApp para agilizar o envio.</p>
-        </div>
+
+            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Formas%20de%20Pagamento." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">
+                Falar sobre Pagamento
+            </a>
+            </div>
     </div>
 
     <div class="modal-overlay" id="modal-trocas-devolucoes">
@@ -1478,7 +1550,11 @@
                 <li>O frete da primeira troca por tamanho ou defeito será <strong>por nossa conta</strong>.</li>
             </ul>
             <p>Para iniciar o processo, envie um e-mail para <strong>nashcompany001@gmail.com</strong> ou contate-nos via WhatsApp.</p>
-        </div>
+
+            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Trocas%20e%20Devolu%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">
+                Falar sobre Trocas
+            </a>
+            </div>
     </div>
 
     <div class="modal-overlay" id="modal-faq">
@@ -1497,7 +1573,11 @@
             
             <h4>Vocês enviam para todo o Brasil?</h4>
             <p>Sim! Enviamos para <strong>todo o Brasil</strong>. Compradores de Salvador têm um canal de comunicação direta (WhatsApp) para agilizar o processo.</p>
-        </div>
+
+            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20que%20n%C3%A3o%20est%C3%A1%20no%20FAQ." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">
+                Falar (Outras Dúvidas)
+            </a>
+            </div>
     </div>
 
     <div class="modal-overlay" id="modal-termos-uso">
@@ -1535,7 +1615,20 @@
         </div>
     </div>
 
-    
+
+    <div class="modal-overlay" id="modal-vip-popup">
+        <div class="modal-content promo-popup-content">
+            <button class="modal-close-btn">&times;</button>
+            <img src="logo-nash.png" alt="NASH COMPANY" class="promo-popup-logo">
+            <h3>ENTRE PARA O GRUPO VIP</h3>
+            <p class="promo-popup-subtitle">Seja o primeiro a saber de tudo.</p>
+            <p>Receba <strong>acesso antecipado</strong> a lançamentos, <strong>descontos exclusivos</strong> e conteúdo de bastidores que só o nosso círculo interno vê.</p>
+            <a href="https://chat.whatsapp.com/G7vSR9IVGCfLhUhHiTDv2l" target="_blank" rel="noopener noreferrer" class="cta-button promo-popup-btn">
+                Entrar no Grupo VIP Agora
+            </a>
+            <small class="promo-popup-disclaimer">(Você será redirecionado para o WhatsApp)</small>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
@@ -1794,8 +1887,10 @@
 
             // Função para fechar o modal
             function closeModal(modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = ''; // Remove scroll-lock
+                if(modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = ''; // Remove scroll-lock
+                }
             }
 
             // Abrir modal ao clicar nos links ou itens da barra
@@ -1842,7 +1937,25 @@
                 }
             });
 
-        });
+
+            // --- 10. LÓGICA DO POP-UP VIP ---
+            const vipPopup = document.getElementById('modal-vip-popup');
+            
+            // Verifica se o popup já foi visto nesta sessão
+            if (!sessionStorage.getItem('vipPopupSeen')) {
+                setTimeout(() => {
+                    // Verifica se nenhum outro modal já está ativo
+                    const isModalActive = document.querySelector('.modal-overlay.active');
+                    if (vipPopup && !isModalActive) {
+                        vipPopup.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        // Marca como visto para esta sessão
+                        sessionStorage.setItem('vipPopupSeen', 'true');
+                    }
+                }, 7000); // Atraso de 7 segundos
+            }
+            
+            });
     </script>
 
 </body>
