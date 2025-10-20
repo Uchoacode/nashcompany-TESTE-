@@ -1078,6 +1078,81 @@
             display: block;
         }
         
+        /* --- NOVO: Botão Ver Detalhes --- */
+        .details-btn {
+            display: inline-block;
+            background: transparent;
+            color: #aaa; /* Cor mais sutil */
+            border: 1px solid #555; /* Borda sutil */
+            padding: 10px 25px;
+            width: 100%;
+            text-decoration: none;
+            font-weight: 600; /* Menos peso que o CTA principal */
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            margin-bottom: 10px; /* Espaço entre os botões */
+        }
+        .details-btn:hover {
+            background: #222;
+            border-color: #777;
+            color: #fff;
+        }
+
+        /* --- NOVO: Estilos do Modal de Produto --- */
+        .product-modal-container {
+            margin-top: 25px;
+        }
+        .product-modal-images {
+            display: flex;
+            flex-direction: column; /* Empilhado no mobile */
+            gap: 20px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 25px;
+        }
+        .product-modal-image-col {
+            flex: 1;
+            text-align: center;
+        }
+        .product-modal-image-col img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #333;
+            margin-bottom: 10px;
+        }
+        .product-modal-image-col span {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .product-modal-details h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .product-modal-details p, .product-modal-details ul {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+        .product-modal-details ul {
+            padding-left: 20px;
+            list-style: disc;
+        }
+         .product-modal-details li {
+            margin-bottom: 5px;
+        }
+        .product-modal-details strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
         /* --- AJUSTE PARA DESKTOP E SWIPER --- */
         @media (min-width: 769px) {
             .modal-content {
@@ -1147,6 +1222,27 @@
             }
             .copyright {
                 text-align: left;
+            }
+
+            /* --- NOVO: Estilos Desktop Modal de Produto --- */
+            .modal-content.product-modal-content {
+                 max-width: 800px; /* Mais largo para detalhes do produto */
+            }
+            .product-modal-container {
+                display: flex; /* Lado a lado: [Imagens] [Texto] */
+                flex-direction: row;
+                gap: 30px;
+                margin-top: 25px;
+            }
+            .product-modal-images {
+                flex: 0 0 45%; /* Coluna de imagens ocupa 45% */
+                flex-direction: column; /* Imagens empilhadas dentro da coluna */
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+            .product-modal-details {
+                flex: 1; /* Coluna de texto ocupa o resto */
             }
         }
         
@@ -1352,13 +1448,14 @@
                                 </div>
                             </div>
                             
+                            <button class="details-btn" data-modal-target="produto-1">Ver Detalhes</button>
                             <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
                         </div>
                     </div>
 
-                    <div class="product-card" data-id="2" data-name="Camisa Estampada" data-price="79.99" data-img="camisa-estampada.jpeg">
+                    <div class="product-card" data-id="2" data-name="Camisa Estampada" data-price="79.99" data-img="camisa-estampada-parte-da-frente.jpg">
                         <div class="product-image-wrapper">
-                             <img src="camisa-estampada.jpeg" alt="Camisa Estampada Preta NASH COMPANY" class="product-image" loading="lazy">
+                             <img src="camisa-estampada-parte-da-frente.jpg" alt="Camisa Estampada Preta NASH COMPANY" class="product-image" loading="lazy">
                         </div>
                         <div class="product-info">
                             <h3>Camisa Estampada</h3>
@@ -1383,6 +1480,7 @@
                                 </div>
                             </div>
                             
+                            <button class="details-btn" data-modal-target="produto-2">Ver Detalhes</button>
                             <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
                         </div>
                     </div>
@@ -1627,6 +1725,69 @@
                 Entrar no Grupo VIP Agora
             </a>
             <small class="promo-popup-disclaimer">(Você será redirecionado para o WhatsApp)</small>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-produto-1">
+        <div class="modal-content product-modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h3>NASH ESSENTIAL TEE</h3>
+            <div class="product-modal-container">
+                <div class="product-modal-images">
+                    <div class="product-modal-image-col">
+                        <img src="camisa-lisa.webp" alt="Camisa Lisa - Frente">
+                        <span>Frente</span>
+                    </div>
+                    <div class="product-modal-image-col">
+                        <img src="camisa-lisa-parte-de-tras.jpg" alt="Camisa Lisa - Costas">
+                        <span>Costas</span>
+                    </div>
+                </div>
+                <div class="product-modal-details">
+                    <h4>A Experiência de Alto Padrão.</h4>
+                    <p>Esta não é apenas uma camiseta. É a fundação do seu estilo, criada para quem entende que o verdadeiro luxo reside na qualidade e no caimento perfeito.</p>
+                    
+                    <h4>Especificações da Peça:</h4>
+                    <ul>
+                        <li><strong>Gramatura Pesada:</strong> Malha premium de <strong>220g</strong>, proporcionando uma sensação substancial, estruturada e durável ("heavyweight").</li>
+                        <li><strong>Toque Superior:</strong> Algodão de alta qualidade com um toque macio que eleva a sensação de conforto.</li>
+                        <li><strong>Corte Atemporal:</strong> Um design minimalista que serve como a tela perfeita para a sua identidade.</li>
+                    </ul>
+                    <p>Você não está comprando uma camisa, está investindo em uma peça-chave que carrega a essência da NASH COMPANY: <strong>design, sofisticação e uma história para contar.</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-produto-2">
+        <div class="modal-content product-modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h3>CAMISA [NOME DA ESTAMPA]</h3> 
+            <div class="product-modal-container">
+                <div class="product-modal-images">
+                    <div class="product-modal-image-col">
+                        <img src="camisa-estampada-parte-da-frente.jpg" alt="Camisa Estampada - Frente">
+                        <span>Frente</span>
+                    </div>
+                    <div class="product-modal-image-col">
+                        <img src="camisa-estampada.jpeg" alt="Camisa Estampada - Costas">
+                        <span>Costas</span>
+                    </div>
+                </div>
+                <div class="product-modal-details">
+                    <h4>Design que Carrega Significado.</h4>
+                    <p>Mais do que uma estampa, esta peça é uma declaração. Inspirada no minimalismo que busca profundidade, ela repre ssenta a história que você escolhe contar.</p>
+                    
+                    <p>A simplicidade do design pode carregar significados profundos, assim como os <strong>símbolos Adinkra</strong> que você pesquisou. Esta camisa é para quem valoriza a história por trás da estética.</p>
+
+                    <h4>Especificações da Peça:</h4>
+                    <ul>
+                        <li><strong>Gramatura Pesada:</strong> Malha premium de <strong>220g</strong>, garantindo um caimento estruturado que valoriza a estampa e o corpo.</li>
+                        <li><strong>Alta Definição:</strong> Estampa aplicada com tecnologia de ponta para máxima durabilidade e definição.</li>
+                        <li><strong>Peça de Destaque:</strong> Criada para ser o ponto focal do seu visual, combinando a cultura de Salvador com um design universal.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -1881,6 +2042,7 @@
             }
             
             // --- 9. LÓGICA DOS POP-UPS MODAIS (Adicionado) ---
+            // Esta lógica agora também controla os novos modais de produto
             const modalOpeners = document.querySelectorAll('[data-modal-target]');
             const modalCloseButtons = document.querySelectorAll('.modal-close-btn');
             const modals = document.querySelectorAll('.modal-overlay');
