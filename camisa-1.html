@@ -93,19 +93,20 @@
     <main class="container">
         <div class="product-page-container">            
             
-            <div class="product-gallery" id="product-gallery-simple" data-front-img="camisa-lisa.webp" data-back-img="camisa-lisa-parte-de-tras.jpg">
-                
-                <img src="camisa-lisa.webp" alt="Camisa Nash Essential - Frente" class="product-gallery-image" id="main-product-image">
-                
-                <button class="gallery-nav-arrow arrow-prev" id="gallery-prev-btn" aria-label="Ver imagem anterior">&larr;</button>
-                <button class="gallery-nav-arrow arrow-next" id="gallery-next-btn" aria-label="Ver próxima imagem">&rarr;</button>
-                
-                <div class="gallery-indicator" id="gallery-indicator">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
+            <div class="swiper product-gallery-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="camisa-lisa.webp" alt="Camisa Nash Essential - Frente">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="camisa-lisa-parte-de-tras.jpg" alt="Camisa Nash Essential - Costas">
+                    </div>
                 </div>
+                <div class="swiper-pagination"></div>
+            
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
-
             <div class="product-details-content" data-id="1" data-name="Nash Essential Tee" data-price="60.00" data-img="camisa-lisa.webp">
                 <h1 class="product-name">Nash Essential Tee</h1>
                 

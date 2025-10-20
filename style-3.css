@@ -1431,7 +1431,7 @@ h2 {
 }
 
 /* ================================================================
-  == INÍCIO DA NOVA GALERIA DE PRODUTO (SEM SWIPER) ==
+  == INÍCIO DA NOVA GALERIA DE PRODUTO (COM SWIPER) ==
   ================================================================
 */
 
@@ -1443,81 +1443,66 @@ h2 {
     padding: 40px 0;
 }
 
-/* O contêiner da galeria */
-.product-gallery {
-    position: relative; /* Para posicionar as setas */
+/* O contêiner principal do Swiper */
+.product-gallery-swiper {
     width: 100%;
     border: 1px solid #222;
-    aspect-ratio: 4 / 5; /* Mantém o tamanho controlado (4 de largura por 5 de altura) */
+    aspect-ratio: 4 / 5; /* Mantém a proporção */
     background-color: #111;
-    overflow: hidden; /* Garante que nada saia */
+    overflow: hidden; 
 }
 
-/* A imagem principal */
-.product-gallery-image {
+/* Cada slide */
+.product-gallery-swiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* A imagem dentro do slide */
+.product-gallery-swiper .swiper-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Adiciona uma transição suave ao trocar a imagem */
-    transition: opacity 0.3s ease-in-out;
 }
 
-/* Classe que o JavaScript vai usar para o "fade" ao trocar */
-.product-gallery-image.fading {
-    opacity: 0;
-}
-
-/* As setas de navegação */
-.gallery-nav-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: #fff;
-    font-size: 1.8rem; /* Seta um pouco maior */
-    font-weight: bold;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
+/* Estilizando as SETAS do Swiper para combinar com o site */
+.product-gallery-swiper .swiper-button-next,
+.product-gallery-swiper .swiper-button-prev {
+    color: #fff; /* Cor da seta */
+    background: rgba(0, 0, 0, 0.3);
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: background 0.2s ease;
-    z-index: 10;
+    /* Esconde as setas por padrão no mobile (focando no swipe) */
+    opacity: 0; 
 }
-.gallery-nav-arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
-.gallery-nav-arrow.arrow-prev {
-    left: 15px;
-}
-.gallery-nav-arrow.arrow-next {
-    right: 15px;
+/* Mostra as setas no desktop (hover) */
+.product-gallery-swiper:hover .swiper-button-next,
+.product-gallery-swiper:hover .swiper-button-prev {
+    opacity: 1;
 }
 
-/* Indicador de "bolinha" (dots) */
-.gallery-indicator {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 10;
+.product-gallery-swiper .swiper-button-next:hover,
+.product-gallery-swiper .swiper-button-prev:hover {
+    background: rgba(0, 0, 0, 0.6);
 }
-.gallery-indicator .dot {
+/* Ajusta o tamanho do ícone da seta */
+.product-gallery-swiper .swiper-button-next::after,
+.product-gallery-swiper .swiper-button-prev::after {
+    font-size: 1.2rem; /* Tamanho da seta "chevron" */
+    font-weight: 700;
+}
+
+/* Estilizando as BOLINHAS (Paginação) do Swiper */
+.product-gallery-swiper .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
     width: 10px;
     height: 10px;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 50%;
-    transition: background 0.3s ease;
-    cursor: pointer;
 }
-.gallery-indicator .dot.active {
+.product-gallery-swiper .swiper-pagination-bullet-active {
     background: #fff;
 }
 
@@ -1553,7 +1538,7 @@ h2 {
 }
 
 /* ================================================================
-  == FIM DA NOVA GALERIA DE PRODUTO ==
+  == FIM DA NOVA GALERIA DE PRODUTO (COM SWIPER) ==
   ================================================================
 */
 

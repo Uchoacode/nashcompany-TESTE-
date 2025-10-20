@@ -93,21 +93,21 @@
     <main class="container">
         <div class="product-page-container">            
             
-            <div class="product-gallery" id="product-gallery-simple" 
-                 data-front-img="camisa-estampada.jpeg" 
-                 data-back-img="camisa-estampada-parte-da-frente.jpg">
+            <div class="swiper product-gallery-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="camisa-estampada.jpeg" alt="Camisa Protea Tee - Costas">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="camisa-estampada-parte-da-frente.jpg" alt="Camisa Protea Tee - Frente">
+                    </div>
+                    </div>
                 
-                <img src="camisa-estampada.jpeg" alt="Camisa Protea Tee - Costas" class="product-gallery-image" id="main-product-image">
-                
-                <button class="gallery-nav-arrow arrow-prev" id="gallery-prev-btn" aria-label="Ver imagem anterior">&larr;</button>
-                <button class="gallery-nav-arrow arrow-next" id="gallery-next-btn" aria-label="Ver próxima imagem">&rarr;</button>
-                
-                <div class="gallery-indicator" id="gallery-indicator">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                </div>
+                <div class="swiper-pagination"></div>
+            
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
-
             <div class="product-details-content" 
                  data-id="2" 
                  data-name="Protea Tee" 

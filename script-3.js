@@ -74,80 +74,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================================================
-    // ===== NOVA SEÇÃO 4B: LÓGICA DA GALERIA SIMPLES (SEM SWIPER) =====
+    // ===== NOVA SEÇÃO 4B: LÓGICA DA GALERIA COM SWIPER (PÁG. PRODUTO) =====
     // ==========================================================
-    const simpleGallery = document.getElementById('product-gallery-simple');
+    const productSwiperContainer = document.querySelector('.product-gallery-swiper');
     
-    if (simpleGallery) {
-        const mainImage = document.getElementById('main-product-image');
-        const prevBtn = document.getElementById('gallery-prev-btn');
-        const nextBtn = document.getElementById('gallery-next-btn');
-        const dots = document.querySelectorAll('.gallery-indicator .dot');
-        
-        // Esta parte agora lê os atributos do HTML
-        const frontImg = simpleGallery.dataset.frontImg;
-        const backImg = simpleGallery.dataset.backImg;
-        
-        // Pega os 'alt' da imagem principal e cria um genérico para as costas
-        const frontAlt = mainImage.alt || "Visão frontal do produto";
-        const backAlt = frontAlt.replace("Frente", "Costas").replace("frontal", "traseira") || "Visão traseira do produto";
-
-        const images = [
-            { src: frontImg, alt: frontAlt },
-            { src: backImg, alt: backAlt }
-        ];
-        let currentIndex = 0;
-
-        function updateGallery(index) {
-            // Adiciona a classe 'fading' para a imagem sumir
-            mainImage.classList.add('fading');
+    if (productSwiperContainer) {
+        const productSwiper = new Swiper(productSwiperContainer, {
+            // Ativa o swipe (que é o padrão) e o loop
+            loop: true,
+            grabCursor: true, // Mostra a "mãozinha" no desktop
             
-            // Espera a transição do CSS (300ms) acabar
-            setTimeout(() => {
-                // Troca a imagem e o alt text
-                mainImage.src = images[index].src;
-                mainImage.alt = images[index].alt;
-                
-                // Atualiza as bolinhas (dots)
-                dots.forEach(dot => dot.classList.remove('active'));
-                if (dots[index]) {
-                    dots[index].classList.add('active');
-                }
-                
-                // Remove a classe 'fading' para a imagem reaparecer
-                mainImage.classList.remove('fading');
-            }, 300); // Este tempo DEVE ser igual ao 'transition' no CSS
-        }
+            // Paginação (as bolinhas)
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+    
+            // Navegação (as setas)
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
 
-        function showNextImage() {
-            currentIndex++;
-            if (currentIndex >= images.length) {
-                currentIndex = 0; // Volta para a primeira
-            }
-            updateGallery(currentIndex);
-        }
-
-        function showPrevImage() {
-            currentIndex--;
-            if (currentIndex < 0) {
-                currentIndex = images.length - 1; // Vai para a última
-            }
-            updateGallery(currentIndex);
-        }
-        
-        // Adiciona os eventos de clique nas setas
-        prevBtn.addEventListener('click', showPrevImage);
-        nextBtn.addEventListener('click', showNextImage);
-
-        // Adiciona evento de clique nas bolinhas
-        dots.forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                const newIndex = parseInt(e.target.dataset.index);
-                if (newIndex !== currentIndex) {
-                    currentIndex = newIndex;
-                    updateGallery(currentIndex);
-                }
-            });
+            // Efeito de fade (transição suave)
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
         });
     }
     // ==========================================================
