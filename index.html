@@ -470,6 +470,44 @@
             position: relative; /* Adicionado para a tag */
         }
         
+        /* --- NOVO: Setas de Navegação do Produto --- */
+        .product-nav-arrows {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 10px;
+            opacity: 0; /* Escondido por padrão */
+            transition: opacity 0.3s ease;
+            z-index: 5;
+        }
+        .product-card:hover .product-nav-arrows {
+            opacity: 1; /* Aparece no hover do card */
+        }
+        .product-nav-arrows button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .product-nav-arrows button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        /* --- Fim do Novo Estilo --- */
+
         /* NOVA TAG DE PERSUASÃO (Ex: Mais Vendido, Escassez) */
         .product-tag {
             position: absolute;
@@ -1417,16 +1455,20 @@
 
         <section id="produtos" class="product-grid reveal">
             <div class="container">
-                <h2>A Coleção</h2>
+                <h2>Coleção Prelude</h2>
                 <div class="grid-container">
                     
-                    <div class="product-card" data-id="1" data-name="Camisa Lisa" data-price="60.00" data-img="camisa-lisa.webp">
-                        <div class="product-image-wrapper">
+                    <div class="product-card" data-id="1" data-name="Nash Essential Tee" data-price="60.00" data-img="camisa-lisa.webp">
+                        <div class="product-image-wrapper" data-front="camisa-lisa.webp" data-back="camisa-lisa-parte-de-tras.jpg">
                             <span class="product-tag">Mais Vendido</span>
                             <img src="camisa-lisa.webp" alt="Camisa Lisa Branca NASH COMPANY" class="product-image" loading="lazy">
+                            <div class="product-nav-arrows">
+                                <button class="arrow-prev" aria-label="Ver imagem anterior">&lt;</button>
+                                <button class="arrow-next" aria-label="Ver próxima imagem">&gt;</button>
+                            </div>
                         </div>
                         <div class="product-info">
-                            <h3>Camisa Lisa</h3>
+                            <h3>Nash Essential Tee</h3>
                             <p class="price">R$ 60,00</p>
                             
                             <div class="product-options">
@@ -1453,12 +1495,16 @@
                         </div>
                     </div>
 
-                    <div class="product-card" data-id="2" data-name="Camisa Estampada" data-price="79.99" data-img="camisa-estampada-parte-da-frente.jpg">
-                        <div class="product-image-wrapper">
-                             <img src="camisa-estampada-parte-da-frente.jpg" alt="Camisa Estampada Preta NASH COMPANY" class="product-image" loading="lazy">
+                    <div class="product-card" data-id="2" data-name="Camisa Proteia" data-price="79.99" data-img="camisa-estampada.jpeg">
+                        <div class="product-image-wrapper" data-front="camisa-estampada-parte-da-frente.jpg" data-back="camisa-estampada.jpeg">
+                             <img src="camisa-estampada.jpeg" alt="Camisa Estampada Preta NASH COMPANY - Costas" class="product-image" loading="lazy">
+                             <div class="product-nav-arrows">
+                                <button class="arrow-prev" aria-label="Ver imagem anterior">&lt;</button>
+                                <button class="arrow-next" aria-label="Ver próxima imagem">&gt;</button>
+                            </div>
                         </div>
                         <div class="product-info">
-                            <h3>Camisa Estampada</h3>
+                            <h3>Proteia Tee</h3>
                             <p class="price">R$ 79,99</p>
 
                             <div class="product-options">
@@ -1762,7 +1808,7 @@
     <div class="modal-overlay" id="modal-produto-2">
         <div class="modal-content product-modal-content">
             <button class="modal-close-btn">&times;</button>
-            <h3>CAMISA [NOME DA ESTAMPA]</h3> 
+            <h3>Proteia Tee</h3> 
             <div class="product-modal-container">
                 <div class="product-modal-images">
                     <div class="product-modal-image-col">
@@ -1776,9 +1822,9 @@
                 </div>
                 <div class="product-modal-details">
                     <h4>Design que Carrega Significado.</h4>
-                    <p>Mais do que uma estampa, esta peça é uma declaração. Inspirada no minimalismo que busca profundidade, ela repre ssenta a história que você escolhe contar.</p>
+                    <p>Mais do que uma estampa, esta peça é uma declaração. Inspirada no minimalismo que busca profundidade, ela representa a história que você escolhe contar.</p>
                     
-                    <p>A simplicidade do design pode carregar significados profundos, assim como os <strong>símbolos Adinkra</strong> que você pesquisou. Esta camisa é para quem valoriza a história por trás da estética.</p>
+                    <p>A simplicidade do design pode carregar significados profundos, assim como a <strong>Proteia</strong>, flor africana que dá nome à peça e simboliza transformação e coragem.</p>
 
                     <h4>Especificações da Peça:</h4>
                     <ul>
@@ -2117,7 +2163,45 @@
                 }, 7000); // Atraso de 7 segundos
             }
             
+            // --- 11. LÓGICA DAS SETAS DE PRODUTO (NOVO) ---
+            const productCards = document.querySelectorAll('.product-card');
+
+            productCards.forEach(card => {
+                const wrapper = card.querySelector('.product-image-wrapper');
+                const image = card.querySelector('.product-image');
+                const nextBtn = card.querySelector('.arrow-next');
+                const prevBtn = card.querySelector('.arrow-prev');
+                
+                if (!wrapper || !image || !nextBtn || !prevBtn) return; // Se não houver setas, ignora
+
+                const frontImgSrc = wrapper.dataset.front;
+                const backImgSrc = wrapper.dataset.back;
+
+                // Função para trocar a imagem
+                const swapImage = () => {
+                    // O 'src' pode vir com o URL completo (http://...), 
+                    // então usamos endsWith para verificar o final do caminho.
+                    if (image.src.endsWith(frontImgSrc)) {
+                        image.src = backImgSrc;
+                    } else {
+                        image.src = frontImgSrc;
+                    }
+                };
+
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Impede o clique de "borbulhar"
+                    e.stopPropagation(); // Impede o clique de "borbulhar"
+                    swapImage();
+                });
+
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    swapImage();
+                });
             });
+
+        });
     </script>
 
 </body>
