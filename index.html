@@ -35,6 +35,7 @@
         <a href="#" class="mobile-nav-link">Início</a>
         <a href="#produtos" class="mobile-nav-link">Loja</a>
         <a href="#sobre-nos" class="mobile-nav-link">Sobre Nós</a>
+        <a href="#lookbook" class="mobile-nav-link">Lookbook</a>
         <a href="#footer" class="mobile-nav-link">Contato</a>
     </nav>
 
@@ -45,13 +46,13 @@
         </div>
         <div id="cart-items-container">
             <p id="cart-empty-msg">Seu carrinho está vazio.</p>
-            </div>
+        </div>
         <div class="cart-footer">
             <div class="cart-subtotal-line">
                 <span>Subtotal:</span>
                 <span id="cart-subtotal">R$ 0,00</span>
             </div>
-            <a href="#" class="checkout-btn">Finalizar Compra</a>
+            <a href="#" class="checkout-btn" id="checkout-btn">Finalizar Compra</a>
         </div>
     </aside>
 
@@ -68,29 +69,26 @@
 
     <header class="main-header">
         <div class="header-container">
-            
             <div class="header-left">
                 <button class="hamburger-menu" id="hamburger-btn" aria-label="Abrir menu">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-                
                 <div class="desktop-nav">
                     <nav aria-label="Navegação principal">
                         <a href="#">Início</a>
                         <a href="#produtos">Loja</a>
                         <a href="#sobre-nos">Sobre Nós</a>
+                        <a href="#lookbook">Lookbook</a>
                     </nav>
                 </div>
             </div>
-            
             <div class="header-center">
                 <a href="/" class="header-logo" aria-label="Página inicial da Nash Company">
                     <img src="logo-nash.png" alt="Logo da Nash Company" class="logo-img">
                 </a>
             </div>
-            
             <div class="header-right">
                 <button class="icon-button" id="cart-icon-btn" aria-label="Ver carrinho">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -99,7 +97,6 @@
                     <span class="cart-badge" id="cart-badge">0</span>
                 </button>
             </div>
-            
         </div>
     </header>
 
@@ -115,7 +112,6 @@
                             <p class="hero-subtitle">Mais que uma marca. É uma história.</p>
                         </div>
                     </div>
-
                     <div class="swiper-slide">
                         <img src="photo-1.jpg" alt="Bastidores de um photoshoot de streetwear com arara de roupas">
                         <div class="hero-content">
@@ -130,7 +126,6 @@
                             <p class="hero-subtitle">Cada peça é uma declaração de estilo e elegância duradoura.</p>
                         </div>
                     </div>
-                    
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev" aria-label="Slide anterior"></div>
@@ -140,53 +135,66 @@
 
         <section class="info-bar reveal">
             <div class="info-item" data-modal-target="entregas-frete">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de caminhão">
-                    <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h8a1 1 0 001-1zM3 11h10M13 6l-4 4h-6M13 6h5a1 1 0 011 1v4" />
-                </svg>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de caminhão"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h8a1 1 0 001-1zM3 11h10M13 6l-4 4h-6M13 6h5a1 1 0 011 1v4" /></svg>
                 <h3>Entregas e Frete</h3>
             </div>
             <div class="info-item" data-modal-target="formas-pagamento">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de cartão de crédito">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                </svg>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de cartão de crédito"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
                 <h3>Pague como preferir</h3>
             </div>
             <div class="info-item" data-modal-target="faq">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de etiqueta de preço">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-5 5a2 2 0 01-2.828 0l-7-7A2 2 0 013 8V5a2 2 0 012-2h2z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 5h.01" />
-                </svg>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de etiqueta de preço"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-5 5a2 2 0 01-2.828 0l-7-7A2 2 0 013 8V5a2 2 0 012-2h2z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 5h.01" /></svg>
                 <h3>Perguntas Frequentes</h3>
             </div>
             <div class="info-item" data-modal-target="trocas-devolucoes">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de troca">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m-15.357-2a8.001 8.001 0 0015.357 2m0 0H15" />
-                </svg>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Ícone de troca"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m-15.357-2a8.001 8.001 0 0015.357 2m0 0H15" /></svg>
                 <h3>Trocas e Devoluções</h3>
             </div>
         </section>
 
         <section id="sobre-nos" class="about-section reveal">
             <div class="container">
-                <div class="about-content">
-                    <h2>Nossa História</h2>
-                    <p>
-                        A NASH COMPANY nasceu com uma proposta clara: <strong>revolucionar o mercado de streetwear no Brasil</strong>. Fundada por <strong>Rian Uchôa e João Marcos</strong>, a marca é o resultado de um grande sonho que começou ainda no ensino médio.
-                    </p>
-                    <p>
-                        Foram anos planejando, <strong>lapidando cada detalhe</strong> e construindo a fundação em busca de um objetivo: entregar a <strong>melhor qualidade possível</strong>, do design ao material.
-                    </p>
-                    <p>
-                        Nossa inspiração vem de casa: <strong>Salvador</strong>. Traduzimos a essência única da nossa capital, as paletas de cores e as paisagens em peças de <strong>alto padrão</strong>, com design contemporâneo e <strong>atemporal</strong>.
-                    </p>
-                    <p>
-                        A NASH não é apenas roupa. É uma afirmação de identidade e design sofisticado.
-                    </p>
-                    <a href="#produtos" class="cta-button">Ver a Coleção</a>
+                <h2>Nossa História</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            A NASH COMPANY nasceu com uma proposta clara: <strong>revolucionar o mercado de streetwear no Brasil</strong>. Fundada por <strong>Rian Uchôa e João Marcos</strong>, a marca é o resultado de um grande sonho que começou ainda no ensino médio.
+                        </p>
+                        <p>
+                            Foram anos planejando, <strong>lapidando cada detalhe</strong> e construindo a fundação em busca de um objetivo: entregar a <strong>melhor qualidade possível</strong>, do design ao material.
+                        </p>
+                        <p>
+                            Nossa inspiração vem de casa: <strong>Salvador</strong>. Traduzimos a essência única da nossa capital, as paletas de cores e as paisagens em peças de <strong>alto padrão</strong>, com design contemporâneo e <strong>atemporal</strong>.
+                        </p>
+                        <p>
+                            A NASH não é apenas roupa. É uma afirmação de identidade e design sofisticado.
+                        </p>
+                        <a href="#produtos" class="cta-button">Ver a Coleção</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://placeholder.com/600x750/111/fff?text=Foto+dos+Fundadores+(Rian+e+João)" alt="Fundadores da NASH COMPANY" loading="lazy">
+                    </div>
                 </div>
             </div>
         </section>
+        
+        <section class="video-section reveal">
+            <div class="container">
+                <h2>A ESSÊNCIA DE SALVADOR</h2>
+                <div class="video-wrapper">
+                    <iframe 
+    src="https://www.youtube.com/embed/Qq23pd22QxM" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+</iframe>
+                </div>
+            </div>
+        </section>
+        <div class="promo-banner" id="promo-banner">
+            <p>🔥 PROMOÇÃO DE LANÇAMENTO termina em<span id="countdown"></span></p>
+        </div>
 
         <section id="produtos" class="product-grid reveal">
             <div class="container">
@@ -206,7 +214,7 @@
                             <h3>Nash Essential Tee</h3>
                             <p class="price" style="text-decoration: line-through; color: #888;">R$ 99,99</p>
                             <p class="price">R$ 60,00</p>
-
+                            <p class="stock-level">Apenas 9 em estoque!</p>
                             
                             <div class="product-options">
                                 <div>
@@ -217,7 +225,10 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label for="size-1">Tamanho:</label>
+                                    <div class="size-label-row">
+                                        <label for="size-1">Tamanho:</label>
+                                        <a href="#" class="size-guide-link" data-modal-target="guia-tamanhos">Guia de Tamanhos</a>
+                                    </div>
                                     <select class="size-select" id="size-1">
                                         <option value="P">P</option>
                                         <option value="M">M</option>
@@ -227,7 +238,7 @@
                                 </div>
                             </div>
                             
-                            <button class="details-btn" data-modal-target="produto-1">Ver Detalhes</button>
+                            <a href="produto-1.html" class="details-btn">Ver Detalhes</a>
                             <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
                         </div>
                     </div>
@@ -244,7 +255,8 @@
                             <h3>Proteia Tee</h3>
                             <p class="price" style="text-decoration: line-through; color: #888;">R$ 129,99</p>
                             <p class="price">R$ 79,99</p>
-
+                            <p class="stock-level">Poucas unidades!</p>
+                            
                             <div class="product-options">
                                 <div>
                                     <label for="color-2">Cor:</label>
@@ -254,7 +266,10 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label for="size-2">Tamanho:</label>
+                                    <div class="size-label-row">
+                                        <label for="size-2">Tamanho:</label>
+                                        <a href="#" class="size-guide-link" data-modal-target="guia-tamanhos">Guia de Tamanhos</a>
+                                    </div>
                                     <select class="size-select" id="size-2">
                                         <option value="P">P</option>
                                         <option value="M">M</option>
@@ -264,7 +279,7 @@
                                 </div>
                             </div>
                             
-                            <button class="details-btn" data-modal-target="produto-2">Ver Detalhes</button>
+                            <a href="produto-1.html" class="details-btn">Ver Detalhes</a>
                             <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
                         </div>
                     </div>
@@ -273,13 +288,24 @@
             </div>
         </section>
 
+        <section id="lookbook" class="lookbook-section reveal">
+            <div class="container">
+                <h2>Lookbook: Prelude</h2>
+                <div class="lookbook-grid">
+                    <div class="lookbook-item"><img src="https://placeholder.com/600x750/111/fff?text=Look+1" alt="Look 1" loading="lazy"></div>
+                    <div class="lookbook-item"><img src="https://placeholder.com/600x750/222/fff?text=Look+2" alt="Look 2" loading="lazy"></div>
+                    <div class="lookbook-item wide"><img src="https://placeholder.com/1220x750/333/fff?text=Look+3+(Wide)" alt="Look 3" loading="lazy"></div>
+                    <div class="lookbook-item"><img src="https://placeholder.com/600x750/444/fff?text=Look+4" alt="Look 4" loading="lazy"></div>
+                    <div class="lookbook-item"><img src="https://placeholder.com/600x750/555/fff?text=Look+5" alt="Look 5" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+
         <section class="testimonial-section reveal">
             <div class="container">
                 <h2>O Que Dizem Nossos Clientes</h2>
-                
                 <div class="swiper testimonial-swiper">
                     <div class="swiper-wrapper">
-                        
                         <div class="swiper-slide">
                             <div class="testimonial-card">
                                 <div class="testimonial-rating">★★★★★</div>
@@ -287,7 +313,6 @@
                                 <p class="testimonial-author">- João P., Salvador-BA</p>
                             </div>
                         </div>
-                        
                         <div class="swiper-slide">
                             <div class="testimonial-card">
                                 <div class="testimonial-rating">★★★★★</div>
@@ -295,7 +320,6 @@
                                 <p class="testimonial-author">- Maria L., São Paulo-SP</p>
                             </div>
                         </div>
-
                         <div class="swiper-slide">
                             <div class="testimonial-card">
                                 <div class="testimonial-rating">★★★★★</div>
@@ -310,7 +334,6 @@
                                 <p class="testimonial-author">- Pedro A., Curitiba-PR</p>
                             </div>
                         </div>
-
                     </div>
                     <div class="swiper-pagination testimonial-pagination"></div>
                 </div>
@@ -321,6 +344,26 @@
             <div class="container">
                 <h2>Faça Parte da Comunidade</h2>
                 <p class="insta-handle">@nashcompany.br</p>
+                <div class="instagram-grid">
+                    <a href="httpsa://www.instagram.com/nashcompany.br" target="_blank" rel="noopener noreferrer" class="insta-post">
+                        <img src="https://placeholder.com/400x400/111/fff?text=Post+1" alt="Post do Instagram 1" loading="lazy">
+                    </a>
+                    <a href="httpsa://www.instagram.com/nashcompany.br" target="_blank" rel="noopener noreferrer" class="insta-post">
+                        <img src="https://placeholder.com/400x400/222/fff?text=Post+2" alt="Post do Instagram 2" loading="lazy">
+                    </a>
+                    <a href="httpsa://www.instagram.com/nashcompany.br" target="_blank" rel="noopener noreferrer" class="insta-post">
+                        <img src="https://placeholder.com/400x400/333/fff?text=Post+3" alt="Post do Instagram 3" loading="lazy">
+                    </a>
+                    <a href="httpsa://www.instagram.com/nashcompany.br" target="_blank" rel="noopener noreferrer" class="insta-post">
+                        <img src="https://placeholder.com/400x400/444/fff?text=Post+4" alt="Post do Instagram 4" loading="lazy">
+                    </a>
+                    <a href="httpsa://www.instagram.com/nashcompany.br" target="_blank" rel="noopener noreferrer" class="insta-post">
+                        <img src="https://placeholder.com/400x400/555/fff?text=Post+5" alt="Post do Instagram 5" loading="lazy">
+                    </a>
+                    <a href="httpsa://www.instagram.com/nashcompany.br" target="_blank" rel="noopener noreferrer" class="insta-post">
+                        <img src="https://placeholder.com/400x400/666/fff?text=Post+6" alt="Post do Instagram 6" loading="lazy">
+                    </a>
+                </div>
                 <a href="https://www.instagram.com/nashcompany.br" target="_blank" rel="noopener noreferrer" class="instagram-button">
                     Seguir @nashcompany.br
                 </a>
@@ -340,9 +383,7 @@
 
             <div class="footer-socials">
                 <a href="https://www.instagram.com/nashcompany.br" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Siga-nos no Instagram">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.667 4.77-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.25-.149-4.77-1.692-4.918-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.668-4.77 4.918-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.441c-3.14 0-3.504.012-4.726.068-2.73.125-3.968 1.36-4.093 4.093-.056 1.222-.068 1.586-.068 4.726s.012 3.504.068 4.726c.125 2.733 1.363 3.968 4.093 4.093 1.222.056 1.586.068 4.726.068s3.504-.012 4.726-.068c2.73-.125 3.968-1.36 4.093-4.093.056-1.222.068-1.586.068-4.726s-.012-3.504-.068-4.726c-.125-2.733-1.363-3.968-4.093-4.093-1.222-.056-1.586-.068-4.726-.068zM12 6.864c-2.838 0-5.136 2.298-5.136 5.136s2.298 5.136 5.136 5.136 5.136-2.298 5.136-5.136S14.838 6.864 12 6.864zm0 8.842c-2.045 0-3.706-1.66-3.706-3.706s1.66-3.706 3.706-3.706 3.706 1.66 3.706 3.706-1.66 3.706-3.706 3.706zm4.864-8.541c-.742 0-1.344.602-1.344 1.344s.602 1.344 1.344 1.344 1.344-.602 1.344-1.344-.602-1.344-1.344-1.344z"/>
-                    </svg>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.667 4.77-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.25-.149-4.77-1.692-4.918-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.668-4.77 4.918-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.441c-3.14 0-3.504.012-4.726.068-2.73.125-3.968 1.36-4.093 4.093-.056 1.222-.068 1.586-.068 4.726s.012 3.504.068 4.726c.125 2.733 1.363 3.968 4.093 4.093 1.222.056 1.586.068 4.726.068s3.504-.012 4.726-.068c2.73-.125 3.968-1.36 4.093-4.093.056-1.222.068-1.586.068-4.726s-.012-3.504-.068-4.726c-.125-2.733-1.363-3.968-4.093-4.093-1.222-.056-1.586-.068-4.726-.068zM12 6.864c-2.838 0-5.136 2.298-5.136 5.136s2.298 5.136 5.136 5.136 5.136-2.298 5.136-5.136S14.838 6.864 12 6.864zm0 8.842c-2.045 0-3.706-1.66-3.706-3.706s1.66-3.706 3.706-3.706 3.706 1.66 3.706 3.706-1.66 3.706-3.706 3.706zm4.864-8.541c-.742 0-1.344.602-1.344 1.344s.602 1.344 1.344 1.344 1.344-.602 1.344-1.344-.602-1.344-1.344-1.344z"/></svg>
                 </a>
             </div>
 
@@ -372,9 +413,7 @@
             <small>Fale conosco no WhatsApp!</small>
         </div>
         <a href="https://wa.me/5571988689508" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Entrar em contato via WhatsApp">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.06 21.94L7.31 20.55C8.76 21.36 10.37 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 6.45 17.5 2 12.04 2M17.26 14.23C17.06 14.73 16.03 15.28 15.5 15.36C15.02 15.43 14.39 15.45 14.06 15.3C13.73 15.15 13.2 14.95 12.56 14.31C11.76 13.51 11.23 12.56 11.03 12.26C10.83 11.96 10.72 11.81 10.72 11.61C10.72 11.41 10.87 11.26 11.02 11.11C11.17 10.96 11.34 10.85 11.52 10.7C11.69 10.55 11.79 10.45 11.94 10.2C12.09 9.95 12.14 9.77 12.04 9.62C11.94 9.47 11.44 8.24 11.21 7.74C10.98 7.24 10.76 7.31 10.61 7.31C10.46 7.31 10.31 7.31 10.16 7.31C10.01 7.31 9.74 7.39 9.51 7.64C9.28 7.89 8.78 8.34 8.78 9.24C8.78 10.14 9.54 11.01 9.69 11.21C9.84 11.41 11.21 13.71 13.41 14.61C14.33 15.01 14.93 15.21 15.38 15.38C15.98 15.61 16.5 15.58 16.88 15.53C17.31 15.48 18.01 15.08 18.23 14.53C18.46 13.98 18.46 13.51 18.39 13.41C18.31 13.31 18.11 13.21 17.86 13.06C17.61 12.91 17.46 12.86 17.26 13.11C17.06 13.36 16.81 13.66 16.71 13.81C16.61 13.96 16.51 14.03 16.31 13.93C16.11 13.83 15.48 13.63 14.73 12.96C14.12 12.41 13.73 11.71 13.58 11.46C13.43 11.21 13.33 11.01 13.43 10.86C13.53 10.71 13.68 10.56 13.83 10.41C1." />
-            </svg>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.06 21.94L7.31 20.55C8.76 21.36 10.37 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 6.45 17.5 2 12.04 2M17.26 14.23C17.06 14.73 16.03 15.28 15.5 15.36C15.02 15.43 14.39 15.45 14.06 15.3C13.73 15.15 13.2 14.95 12.56 14.31C11.76 13.51 11.23 12.56 11.03 12.26C10.83 11.96 10.72 11.81 10.72 11.61C10.72 11.41 10.87 11.26 11.02 11.11C11.17 10.96 11.34 10.85 11.52 10.7C11.69 10.55 11.79 10.45 11.94 10.2C12.09 9.95 12.14 9.77 12.04 9.62C11.94 9.47 11.44 8.24 11.21 7.74C10.98 7.24 10.76 7.31 10.61 7.31C10.46 7.31 10.31 7.31 10.16 7.31C10.01 7.31 9.74 7.39 9.51 7.64C9.28 7.89 8.78 8.34 8.78 9.24C8.78 10.14 9.54 11.01 9.69 11.21C9.84 11.41 11.21 13.71 13.41 14.61C14.33 15.01 14.93 15.21 15.38 15.38C15.98 15.61 16.5 15.58 16.88 15.53C17.31 15.48 18.01 15.08 18.23 14.53C18.46 13.98 18.46 13.51 18.39 13.41C18.31 13.31 18.11 13.21 17.86 13.06C17.61 12.91 17.46 12.86 17.26 13.11C17.06 13.36 16.81 13.66 16.71 13.81C16.61 13.96 16.51 14.03 16.31 13.93C16.11 13.83 15.48 13.63 14.73 12.96C14.12 12.41 13.73 11.71 13.58 11.46C13.43 11.21 13.33 11.01 13.43 10.86C13.53 10.71 13.68 10.56 13.83 10.41C1." /></svg>
         </a>
     </div>
 
@@ -383,21 +422,16 @@
             <button class="modal-close-btn" aria-label="Fechar pop-up">&times;</button>
             <h3>🚚 Entregas e Frete</h3>
             <p>Por estarmos sediados em <strong>Salvador-BA</strong>, nosso processo de logística é customizado para garantir a melhor experiência para você:</p>
-
             <h4>Compradores de Salvador:</h4>
             <p>Após a finalização do pagamento (via Mercado Pago), seu pedido será automaticamente direcionado para o nosso <strong>WhatsApp</strong>. Entraremos em contato imediatamente para combinar a forma de entrega, que será:
             <ul>
                 <li><strong>Entrega rápida e personalizada</strong> na região de Salvador.</li>
                 <li>Frete Grátis em compras <strong>acima de R$199</strong>.</li>
             </ul></p>
-            
             <h4>Outras Regiões (Fora de Salvador):</h4>
             <p>Se a sua compra for de fora de Salvador, entraremos em contato via WhatsApp para definir o melhor método de envio, que geralmente será feito pelos Correios (Sedex/PAC) ou transportadoras parceiras, com custos e prazos informados caso a caso.</p>
-            
-            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Entregas%20e%20Frete." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">
-                Falar sobre Entregas
-            </a>
-            </div>
+            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Entregas%20e%20Frete." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">Falar sobre Entregas</a>
+        </div>
     </div>
 
     <div class="modal-overlay" id="modal-formas-pagamento">
@@ -412,11 +446,8 @@
                 <li><strong>Pix:</strong> Confirmação imediata do pedido.</li>
             </ul>
             <p>A confirmação do pagamento é o ponto de partida para a preparação do seu pedido e o contato via WhatsApp para agilizar o envio.</p>
-
-            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Formas%20de%20Pagamento." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">
-                Falar sobre Pagamento
-            </a>
-            </div>
+            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Formas%20de%20Pagamento." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">Falar sobre Pagamento</a>
+        </div>
     </div>
 
     <div class="modal-overlay" id="modal-trocas-devolucoes">
@@ -424,7 +455,6 @@
             <button class="modal-close-btn" aria-label="Fechar pop-up">&times;</button>
             <h3>📦 Trocas e Devoluções</h3>
             <p>NASH COMPANY garante a satisfação do cliente. Se precisar trocar ou devolver seu produto, o processo é simples:</p>
-            
             <h4>Condições de Troca:</h4>
             <p>O prazo para solicitar a troca ou devolução é de <strong>7 (sete) dias corridos</strong> após o recebimento do produto, conforme o Código de Defesa do Consumidor.</p>
             <ul>
@@ -432,34 +462,24 @@
                 <li>O frete da primeira troca por tamanho ou defeito será <strong>por nossa conta</strong>.</li>
             </ul>
             <p>Para iniciar o processo, envie um e-mail para <strong>nashcompany001@gmail.com</strong> ou contate-nos via WhatsApp.</p>
-
-            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Trocas%20e%20Devolu%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">
-                Falar sobre Trocas
-            </a>
-            </div>
+            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Trocas%20e%20Devolu%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">Falar sobre Trocas</a>
+        </div>
     </div>
 
     <div class="modal-overlay" id="modal-faq">
         <div class="modal-content">
             <button class="modal-close-btn" aria-label="Fechar pop-up">&times;</button>
             <h3>❓ Perguntas Frequentes (FAQ)</h3>
-            
             <h4>Qual o Prazo de Envio (Entrega)?</h4>
             <p>O prazo padrão de envio (separação + postagem) é de <strong>até 10 dias úteis</strong> após a confirmação do pagamento. Após o envio, o tempo de entrega dependerá da sua localização e do método de envio escolhido. Para Salvador, este prazo é geralmente muito menor, pois combinamos a entrega via WhatsApp.</p>
-            
             <h4>Como serei notificado sobre o meu pedido?</h4>
             <p>Após a aprovação do pagamento, você será contatado pela nossa equipe via <strong>WhatsApp</strong> para confirmar os dados e informar sobre a preparação e envio da sua peça.</p>
-
             <h4>O site é seguro?</h4>
             <p>Sim. Utilizamos criptografia SSL e todas as transações de pagamento são processadas pelo <strong>Mercado Pago</strong>, garantindo a segurança dos seus dados financeiros.</p>
-            
             <h4>Vocês enviam para todo o Brasil?</h4>
             <p>Sim! Enviamos para <strong>todo o Brasil</strong>. Compradores de Salvador têm um canal de comunicação direta (WhatsApp) para agilizar o processo.</p>
-
-            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20que%20n%C3%A3o%20est%C3%A1%20no%20FAQ." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">
-                Falar (Outras Dúvidas)
-            </a>
-            </div>
+            <a href="https://wa.me/5571988689508?text=Ol%C3%A1%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20que%20n%C3%A3o%20est%C3%A1%20no%20FAQ." target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">Falar (Outras Dúvidas)</a>
+        </div>
     </div>
 
     <div class="modal-overlay" id="modal-termos-uso">
@@ -467,13 +487,10 @@
             <button class="modal-close-btn" aria-label="Fechar pop-up">&times;</button>
             <h3>📄 Termos de Uso</h3>
             <p>Estes Termos de Uso regem a utilização da loja virtual NASH COMPANY. Ao realizar uma compra, você concorda com todas as cláusulas aqui descritas.</p>
-
             <h4>1. Uso do Site</h4>
             <p>O usuário se compromete a utilizar o site de forma lícita, seguindo as diretrizes e respeitando os <strong>direitos de propriedade intelectual</strong> da NASH COMPANY.</p>
-
             <h4>2. Preços e Estoque</h4>
             <p>Os preços dos produtos estão sujeitos a alterações sem aviso prévio. A disponibilidade em estoque é atualizada constantemente, mas não garantimos que um item visto estará sempre disponível, devido à <strong>natureza exclusiva</strong> de algumas peças.</p>
-
             <h4>3. Responsabilidade</h4>
             <p>A NASH COMPANY não se responsabiliza por mau uso dos produtos ou por informações incorretas fornecidas pelo cliente no cadastro ou envio. Quaisquer dúvidas devem ser resolvidas via <strong>canais de atendimento</strong> antes da compra.</p>
             <p>Para ler os termos de uso completos, entre em contato.</p>
@@ -485,13 +502,10 @@
             <button class="modal-close-btn" aria-label="Fechar pop-up">&times;</button>
             <h3>🔒 Política de Privacidade (LGPD)</h3>
             <p>A NASH COMPANY leva a sua privacidade a sério. Seus dados pessoais são tratados com o <strong>máximo cuidado</strong>, em conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
-
             <h4>1. Coleta de Dados</h4>
             <p>Coletamos apenas os dados necessários para processar seu pedido (nome, endereço, e-mail e telefone) e garantir o <strong>contato via WhatsApp</strong> após a compra.</p>
-
             <h4>2. Proteção</h4>
             <p>Todos os dados são armazenados em <strong>servidores seguros e criptografados</strong>. As informações de pagamento são tratadas exclusivamente pelo Mercado Pago, sem acesso da loja.</p>
-
             <h4>3. Uso de Dados</h4>
             <p>Seus dados são usados para: processar e enviar pedidos, fornecer suporte e, mediante seu consentimento, enviar <strong>promoções e novidades</strong> da NASH COMPANY.</p>
         </div>
@@ -511,72 +525,53 @@
             <small class="promo-popup-disclaimer">(Você será redirecionado para o WhatsApp)</small>
         </div>
     </div>
-
-    <div class="modal-overlay" id="modal-produto-1">
-        <div class="modal-content product-modal-content">
-            <button class="modal-close-btn" aria-label="Fechar pop-up">&times;</button>
-            <h3>NASH ESSENTIAL TEE</h3>
-            <div class="product-modal-container">
-                <div class="product-modal-images">
-                    <div class="product-modal-image-col">
-                        <img src="camisa-lisa.webp" alt="Camisa Lisa - Frente">
-                        <span>Frente</span>
-                    </div>
-                    <div class="product-modal-image-col">
-                        <img src="camisa-lisa-parte-de-tras.jpg" alt="Camisa Lisa - Costas">
-                        <span>Costas</span>
-                    </div>
-                </div>
-                <div class="product-modal-details">
-                    <h4>A Experiência de Alto Padrão.</h4>
-                    <p>Esta não é apenas uma camiseta. É a fundação do seu estilo, criada para quem entende que o verdadeiro luxo reside na qualidade e no caimento perfeito.</p>
-                    
-                    <h4>Especificações da Peça:</h4>
-                    <ul>
-                        <li><strong>Gramatura Pesada:</strong> Malha premium de <strong>220g</strong>, proporcionando uma sensação substancial, estruturada e durável ("heavyweight").</li>
-                        <li><strong>Toque Superior:</strong> Algodão de alta qualidade com um toque macio que eleva a sensação de conforto.</li>
-                        <li><strong>Corte Atemporal:</strong> Um design minimalista que serve como a tela perfeita para a sua identidade.</li>
-                        <li><strong>Etiqueta de Acrilico:</strong> Etiqueta de acrílico com o logo da NASH COMPANY na parte da nuca.</li>
-                    </ul>
-                    <p>Você não está comprando uma camisa, está investindo em uma peça-chave que carrega a essência da NASH COMPANY: <strong>design, sofisticação e uma história para contar.</strong></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modal-produto-2">
-        <div class="modal-content product-modal-content">
-            <button class="modal-close-btn" aria-label="Fechar pop-up">&times;</button>
-            <h3>Proteia Tee</h3> 
-            <div class="product-modal-container">
-                <div class="product-modal-images">
-                    <div class="product-modal-image-col">
-                        <img src="camisa-estampada-parte-da-frente.jpg" alt="Camisa Estampada - Frente">
-                        <span>Frente</span>
-                    </div>
-                    <div class="product-modal-image-col">
-                        <img src="camisa-estampada.jpeg" alt="Camisa Estampada - Costas">
-                        <span>Costas</span>
-                    </div>
-                </div>
-                <div class="product-modal-details">
-                    <h4>Design que Carrega Significado.</h4>
-                    <p>Mais do que uma estampa, esta peça é uma declaração. Inspirada no minimalismo que busca profundidade, ela representa a história que você escolhe contar.</p>
-                    
-                    <p>A simplicidade do design pode carregar significados profundos, assim como a <strong>Proteia</strong>, flor africana que dá nome à peça e simboliza transformação e coragem.</p>
-
-                    <h4>Especificações da Peça:</h4>
-                    <ul>
-                        <li><strong>Gramatura Pesada:</strong> Malha premium de <strong>220g</strong>, garantindo um caimento estruturado que valoriza a estampa e o corpo.</li>
-                        <li><strong>Alta Definição:</strong> Estampa aplicada com tecnologia de ponta para máxima durabilidade e definição.</li>
-                        <li><strong>Peça de Destaque:</strong> Criada para ser o ponto focal do seu visual, combinando a cultura de Salvador com um design universal.</li>
-                        <li><strong>Etiqueta de Acrilico:</strong> Etiqueta de acrílico com o logo da NASH COMPANY na parte da frente.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     
+    <div class="modal-overlay" id="modal-guia-tamanhos">
+        <div class="modal-content">
+            <button class="modal-close-btn" aria-label="Fechar pop-up">&times;</button>
+            <h3>📏 Guia de Tamanhos</h3>
+            <p>Compare as medidas (Comprimento x Largura) com uma peça que você já tenha para encontrar o tamanho ideal.</p>
+            <table class="size-guide-table">
+                <thead>
+                    <tr>
+                        <th>Tamanho</th>
+                        <th>Altura (cm)</th>
+                        <th>Largura (cm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>P</strong></td>
+                        <td>71</td>
+                        <td>54</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M</strong></td>
+                        <td>72</td>
+                        <td>56</td>
+                    </tr>
+                    <tr>
+                        <td><strong>G</strong></td>
+                        <td>75</td>
+                        <td>58</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GG</strong></td>
+                        <td>79.5</td>
+                        <td>59</td>
+                    </tr>
+                    <tr>
+                        <td><strong>XGG</strong></td>
+                        <td>80</td>
+                        <td>63</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="size-guide-disclaimer">As medidas podem variar até 5%.</p>
+        </div>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.getElementById('preloader');
     window.addEventListener('load', () => {
         setTimeout(() => {
-            preloader.classList.add('hidden');
+            if(preloader) preloader.classList.add('hidden');
         }, 500); 
     });
 
@@ -13,13 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileNav = document.getElementById('mobile-nav');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     
-    hamburgerBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('open');
-    });
+    if (hamburgerBtn && mobileNav) {
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+        });
+    }
 
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-            mobileNav.classList.remove('open');
+            if (mobileNav) mobileNav.classList.remove('open');
         });
     });
 
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     });
 
-    // --- 4. LÓGICA DO CARROSSEL DE DEPOIMENTOS (BREAKPOINTS AJUSTADOS) ---
+    // --- 4. LÓGICA DO CARROSSEL DE DEPOIMENTOS ---
     const testimonialSwiper = new Swiper('.testimonial-swiper', {
         loop: true,
         autoplay: {
@@ -86,7 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
     allColorSwatchesGroups.forEach(group => {
         const swatches = group.querySelectorAll('.color-swatch');
         swatches.forEach(swatch => {
-            swatch.addEventListener('click', () => {
+            swatch.addEventListener('click', (e) => {
+                e.preventDefault();
                 swatches.forEach(s => s.classList.remove('active'));
                 swatch.classList.add('active');
             });
@@ -99,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let hideTimeout;
     
     function showPromoBox() {
+        if (!promoBox) return;
         if (promoBox.classList.contains('visible')) return; 
         promoBox.classList.add('visible');
         hideTimeout = setTimeout(() => {
@@ -106,56 +110,60 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000); 
     }
 
-    whatsappFab.addEventListener('click', () => {
-        clearTimeout(hideTimeout);
-        promoBox.classList.remove('visible');
-    });
-
-    setTimeout(function() {
-        showPromoBox(); 
-        setInterval(showPromoBox, 30000);
-    }, 2000); 
-
-    if (window.innerWidth >= 769) {
-        whatsappFab.addEventListener('mouseenter', () => {
+    if(whatsappFab) {
+        whatsappFab.addEventListener('click', () => {
             clearTimeout(hideTimeout);
-            promoBox.classList.add('visible');
+            if(promoBox) promoBox.classList.remove('visible');
         });
-        whatsappFab.addEventListener('mouseleave', () => {
-            hideTimeout = setTimeout(() => {
-                promoBox.classList.remove('visible');
-            }, 1000); 
-        });
+
+        setTimeout(function() {
+            showPromoBox(); 
+            setInterval(showPromoBox, 30000);
+        }, 2000); 
+
+        if (window.innerWidth >= 769) {
+            whatsappFab.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+                if(promoBox) promoBox.classList.add('visible');
+            });
+            whatsappFab.addEventListener('mouseleave', () => {
+                hideTimeout = setTimeout(() => {
+                    if(promoBox) promoBox.classList.remove('visible');
+                }, 1000); 
+            });
+        }
     }
 
 
-    // --- 8. LÓGICA DO CARRINHO DE COMPRAS ---
+    // --- 8. LÓGICA DO CARRINHO DE COMPRAS (GLOBAL) ---
     
-    // MELHORIA: Carrega o carrinho do localStorage ou inicia um array vazio
+    // Variáveis globais do carrinho
     let cart = JSON.parse(localStorage.getItem('nashCart')) || [];
-
     const cartIconBtn = document.getElementById('cart-icon-btn');
     const miniCart = document.getElementById('mini-cart');
     const closeCartBtn = document.getElementById('close-cart-btn');
     const cartItemsContainer = document.getElementById('cart-items-container');
     const cartBadge = document.getElementById('cart-badge');
     const cartSubtotalEl = document.getElementById('cart-subtotal');
-    const cartEmptyMsg = document.getElementById('cart-empty-msg');
     const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
 
-    // --- FUNÇÕES DO CARRINHO (Definidas primeiro) ---
-
-    // MELHORIA: Nova função para salvar o carrinho no localStorage
+    // Função para salvar o carrinho no localStorage
     function saveCart() {
         localStorage.setItem('nashCart', JSON.stringify(cart));
     }
 
+    // Função para atualizar o subtotal
     function updateSubtotal() {
         const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-        cartSubtotalEl.textContent = `R$ ${subtotal.toFixed(2)}`;
+        if (cartSubtotalEl) {
+            cartSubtotalEl.textContent = `R$ ${subtotal.toFixed(2)}`;
+        }
     }
 
+    // Função para renderizar os itens no mini-carrinho
     function renderCart() {
+        if (!cartItemsContainer) return;
+        
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p id="cart-empty-msg">Seu carrinho está vazio.</p>';
             updateSubtotal();
@@ -180,7 +188,9 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSubtotal();
     }
 
+    // Função para atualizar o número no ícone do carrinho
     function updateCartBadge() {
+        if (!cartBadge) return;
         const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
         cartBadge.textContent = totalItems;
         
@@ -190,17 +200,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     }
     
-    // --- FIM DAS DEFINIÇÕES DE FUNÇÕES ---
+    // --- Event Listeners do Carrinho (Página Principal) ---
+    if (cartIconBtn && miniCart) {
+        cartIconBtn.addEventListener('click', () => miniCart.classList.add('open'));
+    }
+    if (closeCartBtn && miniCart) {
+        closeCartBtn.addEventListener('click', () => miniCart.classList.remove('open'));
+    }
 
-
-    // --- EVENT LISTENERS DO CARRINHO ---
-
-    cartIconBtn.addEventListener('click', () => miniCart.classList.add('open'));
-    closeCartBtn.addEventListener('click', () => miniCart.classList.remove('open'));
-
+    // Adicionar ao carrinho (nos cards da HOME)
     addToCartButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const card = e.target.closest('.product-card');
+            if (!card) return;
             
             const id = card.dataset.id;
             const name = card.dataset.name;
@@ -220,22 +232,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (existingItem) {
                 existingItem.quantity++;
             } else {
-                cart.push({
-                    cartItemId,
-                    id,
-                    name,
-                    price,
-                    img,
-                    color,
-                    size,
-                    quantity: 1
-                });
+                cart.push({ cartItemId, id, name, price, img, color, size, quantity: 1 });
             }
 
-            // MELHORIA DE PERSUASÃO: Feedback visual no botão
             const originalText = button.textContent;
             button.textContent = 'Adicionado!';
-            button.style.background = '#fff'; // Inverte para o estado hover
+            button.style.background = '#fff';
             button.style.color = '#000';
             button.disabled = true;
 
@@ -244,47 +246,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.style.background = 'transparent';
                 button.style.color = '#fff';
                 button.disabled = false;
-            }, 2000); // Reseta o botão após 2 segundos
+            }, 2000); 
 
-            saveCart(); // <-- MELHORIA: Salva o carrinho
+            saveCart();
             renderCart();
             updateCartBadge();
-            miniCart.classList.add('open'); 
+            if (miniCart) miniCart.classList.add('open'); 
         });
     });
 
-    cartItemsContainer.addEventListener('click', (e) => {
-        if (e.target.classList.contains('cart-item-remove-btn')) {
-            const cartItemId = e.target.dataset.cartItemId;
-            cart = cart.filter(item => item.cartItemId !== cartItemId);
-            
-            saveCart(); // <-- MELHORIA: Salva o carrinho
-            renderCart();
-            updateCartBadge();
-        }
-    });
+    // Remover do carrinho (listener global no container)
+    if (cartItemsContainer) {
+        cartItemsContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('cart-item-remove-btn')) {
+                const cartItemId = e.target.dataset.cartItemId;
+                cart = cart.filter(item => item.cartItemId !== cartItemId);
+                
+                saveCart();
+                renderCart();
+                updateCartBadge();
+            }
+        });
+    }
     
-    // --- CARREGAMENTO INICIAL DO CARRINHO ---
-    // MELHORIA: Renderiza o carrinho salvo assim que a página carrega
+    // Carregamento inicial do carrinho em TODAS as páginas
     renderCart();
     updateCartBadge();
 
 
-    // --- 9. LÓGICA DOS POP-UPS MODAIS (Adicionado) ---
-    // Esta lógica agora também controla os novos modais de produto
+    // --- 9. LÓGICA DOS POP-UPS MODAIS (GLOBAL) ---
     const modalOpeners = document.querySelectorAll('[data-modal-target]');
     const modalCloseButtons = document.querySelectorAll('.modal-close-btn');
     const modals = document.querySelectorAll('.modal-overlay');
 
-    // Função para fechar o modal
     function closeModal(modal) {
         if(modal) {
             modal.classList.remove('active');
-            document.body.style.overflow = ''; // Remove scroll-lock
+            document.body.style.overflow = '';
         }
     }
 
-    // Abrir modal ao clicar nos links ou itens da barra
     modalOpeners.forEach(opener => {
         opener.addEventListener('click', (e) => {
             e.preventDefault(); 
@@ -292,16 +293,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetModal = document.getElementById(`modal-${targetId}`);
             
             if (targetModal) {
-                // Fecha qualquer outro modal aberto antes de abrir o novo
                 modals.forEach(m => m.classList.remove('active')); 
-
                 targetModal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Evita scroll do fundo
+                document.body.style.overflow = 'hidden';
             }
         });
     });
 
-    // Fechar modal ao clicar no botão 'X'
     modalCloseButtons.forEach(button => {
         button.addEventListener('click', () => {
             const modal = button.closest('.modal-overlay');
@@ -309,16 +307,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Fechar modal ao clicar fora da área do conteúdo
     modals.forEach(modal => {
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) { // Verifica se o clique foi no overlay
+            if (e.target === modal) {
                 closeModal(modal);
             }
         });
     });
 
-    // Fechar modal ao pressionar ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             const openModal = document.querySelector('.modal-overlay.active');
@@ -332,38 +328,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- 10. LÓGICA DO POP-UP VIP ---
     const vipPopup = document.getElementById('modal-vip-popup');
     
-    // Verifica se o popup já foi visto nesta sessão
-    if (!sessionStorage.getItem('vipPopupSeen')) {
+    if (vipPopup && !sessionStorage.getItem('vipPopupSeen')) {
         setTimeout(() => {
-            // Verifica se nenhum outro modal já está ativo
             const isModalActive = document.querySelector('.modal-overlay.active');
             if (vipPopup && !isModalActive) {
                 vipPopup.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                // Marca como visto para esta sessão
                 sessionStorage.setItem('vipPopupSeen', 'true');
             }
-        }, 7000); // Atraso de 7 segundos
+        }, 7000);
     }
     
-    // --- 11. LÓGICA DAS SETAS DE PRODUTO (NOVO) ---
+    // --- 11. LÓGICA DAS SETAS DE PRODUTO (HOME) ---
     const productCards = document.querySelectorAll('.product-card');
-
     productCards.forEach(card => {
         const wrapper = card.querySelector('.product-image-wrapper');
         const image = card.querySelector('.product-image');
         const nextBtn = card.querySelector('.arrow-next');
         const prevBtn = card.querySelector('.arrow-prev');
         
-        if (!wrapper || !image || !nextBtn || !prevBtn) return; // Se não houver setas, ignora
+        if (!wrapper || !image || !nextBtn || !prevBtn) return;
 
         const frontImgSrc = wrapper.dataset.front;
         const backImgSrc = wrapper.dataset.back;
 
-        // Função para trocar a imagem
         const swapImage = () => {
-            // O 'src' pode vir com o URL completo (http://...), 
-            // então usamos endsWith para verificar o final do caminho.
             if (image.src.endsWith(frontImgSrc)) {
                 image.src = backImgSrc;
             } else {
@@ -372,8 +361,8 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         nextBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Impede o clique de "borbulhar"
-            e.stopPropagation(); // Impede o clique de "borbulhar"
+            e.preventDefault();
+            e.stopPropagation();
             swapImage();
         });
 
@@ -383,5 +372,96 @@ document.addEventListener('DOMContentLoaded', function() {
             swapImage();
         });
     });
+    
+    // --- 12. LÓGICA DE CHECKOUT VIA WHATSAPP (GLOBAL) ---
+    const phoneNumber = "5571988689508"; 
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    function handleCheckout() {
+        if (cart.length === 0) {
+            alert("Seu carrinho está vazio. Adicione alguns produtos antes de finalizar!");
+            return;
+        }
+
+        let message = "Olá, NASH COMPANY! 🚀\nGostaria de finalizar meu pedido:\n\n";
+
+        cart.forEach(item => {
+            message += `*Produto:* ${item.name}\n`;
+            message += `*Detalhes:* ${item.color} / ${item.size}\n`;
+            message += `*Preço:* R$ ${item.price.toFixed(2)}\n`;
+            message += `*Quantidade:* ${item.quantity}\n`;
+            message += `------------------------\n`;
+        });
+
+        const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+        message += `\n*SUBTOTAL DO PEDIDO: R$ ${subtotal.toFixed(2)}*`;
+        message += `\n\nAguardo as instruções para pagamento.`;
+
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(whatsappURL, '_blank');
+        
+        // Opcional: Limpar o carrinho (descomente as linhas abaixo se quiser)
+        // cart = [];
+        // saveCart();
+        // renderCart();
+        // updateCartBadge();
+    }
+
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleCheckout();
+        });
+    }
+
+    // --- 13. LÓGICA DO BANNER DE CONTAGEM REGRESSIVA ---
+    function startCountdown() {
+        // Define uma data-alvo. 
+        // Para um drop real, defina uma data fixa. Ex: "Oct 25, 2025 23:59:59"
+        let targetTime;
+        const storedTarget = localStorage.getItem('countdownTarget');
+
+        // Se já tem um timer rodando no localStorage E ele não expirou, usa ele
+        if (storedTarget && storedTarget > new Date().getTime()) {
+            targetTime = parseInt(storedTarget);
+        } else {
+            // Se não tem, cria um novo timer de 24h e salva
+            targetTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+            localStorage.setItem('countdownTarget', targetTime);
+        }
+
+        const countdownElement = document.getElementById('countdown');
+        if (!countdownElement) return;
+
+        const interval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetTime - now;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                const banner = document.getElementById('promo-banner');
+                if (banner) banner.innerHTML = "<p>PROMOÇÃO DE LANÇAMENTO ENCERRADA</p>";
+                localStorage.removeItem('countdownTarget');
+                return;
+            }
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const f_hours = hours.toString().padStart(2, '0');
+            const f_minutes = minutes.toString().padStart(2, '0');
+            const f_seconds = seconds.toString().padStart(2, '0');
+
+            countdownElement.innerHTML = `${f_hours}:${f_minutes}:${f_seconds}`;
+
+        }, 1000);
+    }
+    
+    // Só inicia o countdown se o banner existir na página (só no index.html)
+    if (document.getElementById('promo-banner')) {
+        startCountdown();
+    }
 
 });
