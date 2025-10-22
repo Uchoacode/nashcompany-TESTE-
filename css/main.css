@@ -1,0 +1,4 @@
+/* Importação dos arquivos CSS modulares */
+@import url('_layout.css');
+@import url('_products.css');
+@import url('_modals.css');
