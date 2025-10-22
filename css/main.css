@@ -2,3 +2,4 @@
 @import url('_layout.css');
 @import url('_products.css');
 @import url('_modals.css');
+@import url('page-produto.css'); /* CORREÇÃO: Importação do CSS da página de produto */

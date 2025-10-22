@@ -67,7 +67,23 @@ const testimonialSwiper = new Swiper('.testimonial-swiper', {
     }
 });
 
-// --- 5. LÓGICA DAS ANIMAÇÕES DE SCROLL ---
+// --- 5. LÓGICA DO CARROSSEL DA PÁGINA DE PRODUTO (CORREÇÃO APLICADA) ---
+const productGallerySwiper = new Swiper('.product-gallery-swiper', {
+    loop: true,
+    spaceBetween: 0,
+    grabCursor: true, // Permite arrastar no desktop
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+
+// --- 6. LÓGICA DAS ANIMAÇÕES DE SCROLL ---
 const revealElements = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -83,7 +99,7 @@ revealElements.forEach(el => {
     observer.observe(el);
 });
 
-// --- 6. LÓGICA DE OPÇÕES DE PRODUTO (CORES) ---
+// --- 7. LÓGICA DE OPÇÕES DE PRODUTO (CORES) ---
 const allColorSwatchesGroups = document.querySelectorAll('.color-swatches');
 allColorSwatchesGroups.forEach(group => {
     const swatches = group.querySelectorAll('.color-swatch');
@@ -96,7 +112,7 @@ allColorSwatchesGroups.forEach(group => {
     });
 });
 
-// --- 7. LÓGICA: POP-UP DO WHATSAPP ---
+// --- 8. LÓGICA: POP-UP DO WHATSAPP ---
 const whatsappFab = document.querySelector('.whatsapp-fab');
 const promoBox = document.getElementById('whatsapp-promo-box');
 let hideTimeout;
@@ -134,7 +150,7 @@ if(whatsappFab) {
     }
 }
 
-// --- 8. LÓGICA DOS POP-UPS MODAIS (GLOBAL) ---
+// --- 9. LÓGICA DOS POP-UPS MODAIS (GLOBAL) ---
 const modalOpeners = document.querySelectorAll('[data-modal-target]');
 const modalCloseButtons = document.querySelectorAll('.modal-close-btn');
 const modals = document.querySelectorAll('.modal-overlay');
@@ -184,7 +200,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// --- 9. LÓGICA DO POP-UP VIP ---
+// --- 10. LÓGICA DO POP-UP VIP ---
 const vipPopup = document.getElementById('modal-vip-popup');
 
 if (vipPopup && !sessionStorage.getItem('vipPopupSeen')) {
@@ -198,7 +214,7 @@ if (vipPopup && !sessionStorage.getItem('vipPopupSeen')) {
     }, 7000);
 }
 
-// --- 10. LÓGICA DAS SETAS DE PRODUTO (HOME) ---
+// --- 11. LÓGICA DAS SETAS DE PRODUTO (HOME) ---
 const productCards = document.querySelectorAll('.product-card');
 productCards.forEach(card => {
     const wrapper = card.querySelector('.product-image-wrapper');
@@ -232,7 +248,7 @@ productCards.forEach(card => {
     });
 });
 
-// --- 11. LÓGICA DO BANNER DE CONTAGEM REGRESSIVA ---
+// --- 12. LÓGICA DO BANNER DE CONTAGEM REGRESSIVA ---
 function startCountdown() {
     // Define uma data-alvo. 
     // Para um drop real, defina uma data fixa. Ex: "Oct 25, 2025 23:59:59"
