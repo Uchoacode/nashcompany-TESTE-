@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": "2025-10-23T04:00:05.603Z",
+    "phoneNumber": "5571988689508",
+    "message": "Salve, Nash! 👋\n\nNovo pedido confirmado no site da Nash Company 🖤\n\n🧾 Dados do pedido:\n• Cliente: João Silva\n• Telefone: 71999887766\n• Produtos:\n• Camisa Nash Company - Preto / M (x1)\n• Valor dos produtos: R$ 89,90\n• Frete: R$ 15,00\n• Valor total: R$ 104,90\n\n📍 Endereço de entrega:\nRua da Liberdade, 123\nCentro, Salvador - BA\nCEP: 40000-000\n\n🏙️ Localidade:\nSalvador\n\n💳 Forma de pagamento: PIX\n🕒 Status: Pagamento confirmado ✅\n\n👉 Assim que o pedido for separado, o cliente será avisado automaticamente.",
+    "status": "pending"
+  },
+  {
+    "timestamp": "2025-10-23T04:03:44.078Z",
+    "phoneNumber": "5571988689508",
+    "message": "Salve, Nash! 👋\n\nNovo pedido confirmado no site da Nash Company 🖤\n\n🧾 Dados do pedido:\n• Cliente: João Silva\n• Telefone: 71999887766\n• Produtos:\n• Camisa Nash Company - Preto / M (x1)\n• Valor dos produtos: R$ 89,90\n• Frete: R$ 15,00\n• Valor total: R$ 104,90\n\n📍 Endereço de entrega:\nRua da Liberdade, 123\nCentro, Salvador - BA\nCEP: 40000-000\n\n🏙️ Localidade:\nSalvador\n\n💳 Forma de pagamento: PIX\n🕒 Status: Pagamento confirmado ✅\n\n👉 Logo após a confirmação do pagamento, iremos ver como via funcionar a entrega.",
+    "status": "pending"
+  },
+  {
+    "timestamp": "2025-10-23T04:03:44.091Z",
+    "phoneNumber": "71999887766",
+    "message": "Olá! 👋\n\nSeu pedido foi confirmado na NASH COMPANY! 🖤\n\n🧾 Resumo do seu pedido:\n• Camisa Nash Company - Preto / M (x1)\n\n💰 Valores:\n• Produtos: R$ 89,90\n• Frete: R$ 15,00\n• Total: R$ 104,90\n\n📍 Entrega será feita em:\nRua da Liberdade, 123\nCentro, Salvador - BA\n\n🏙️ Localidade: Salvador\n\n✅ Pagamento confirmado! Logo após a confirmação do pagamento, iremos ver como via funcionar a entrega.\n\nObrigado por escolher a NASH COMPANY! 🖤",
+    "status": "pending"
+  },
+  {
+    "timestamp": "2025-10-23T04:03:58.224Z",
+    "phoneNumber": "5571988689508",
+    "message": "Salve, Nash! 👋\n\nNovo pedido confirmado no site da Nash Company 🖤\n\n🧾 Dados do pedido:\n• Cliente: Maria Santos\n• Telefone: 71987654321\n• Produtos:\n• Camisa Nash Company Premium - Branco / G (x2)\n• Valor dos produtos: R$ 179,80\n• Frete: GRÁTIS\n• Valor total: R$ 179,80\n\n📍 Endereço de entrega:\nAvenida Sete de Setembro, 456\nBarra, Salvador - BA\nCEP: 40130-000\n\n🏙️ Localidade:\nSalvador\n\n💳 Forma de pagamento: Cartão\n🕒 Status: Pagamento confirmado ✅\n\n👉 Logo após a confirmação do pagamento, iremos ver como via funcionar a entrega.",
+    "status": "pending"
+  },
+  {
+    "timestamp": "2025-10-23T04:03:58.254Z",
+    "phoneNumber": "71987654321",
+    "message": "Olá! 👋\n\nSeu pedido foi confirmado na NASH COMPANY! 🖤\n\n🧾 Resumo do seu pedido:\n• Camisa Nash Company Premium - Branco / G (x2)\n\n💰 Valores:\n• Produtos: R$ 179,80\n• Frete: GRÁTIS\n• Total: R$ 179,80\n\n📍 Entrega será feita em:\nAvenida Sete de Setembro, 456\nBarra, Salvador - BA\n\n🏙️ Localidade: Salvador\n\n✅ Pagamento confirmado! Logo após a confirmação do pagamento, iremos ver como via funcionar a entrega.\n\nObrigado por escolher a NASH COMPANY! 🖤",
+    "status": "pending"
+  },
+  {
+    "timestamp": "2025-10-23T04:08:16.098Z",
+    "phoneNumber": "5571988689508",
+    "message": "Salve, Nash! 👋\n\nNovo pedido confirmado no site da Nash Company 🖤\n\n🧾 Dados do pedido:\n• Cliente: João Silva\n• Telefone: 71999887766\n• Produtos:\n• Camisa Nash Company - Preto / M (x1)\n• Valor total: R$ 89,90\n\n📍 Endereço de entrega:\nRua da Liberdade, 123\nCentro, Salvador - BA\nCEP: 40000-000\n\n🏙️ Localidade:\nSalvador\n\n💳 Forma de pagamento: PIX\n🕒 Status: Pagamento confirmado ✅\n\n👉 Logo após a confirmação do pagamento, iremos ver como via funcionar a entrega.",
+    "status": "pending"
+  },
+  {
+    "timestamp": "2025-10-23T04:08:16.115Z",
+    "phoneNumber": "71999887766",
+    "message": "Olá! 👋\n\nSeu pedido foi confirmado na NASH COMPANY! 🖤\n\n🧾 Resumo do seu pedido:\n• Camisa Nash Company - Preto / M (x1)\n\n💰 Valor total: R$ 89,90\n\n📍 Entrega será feita em:\nRua da Liberdade, 123\nCentro, Salvador - BA\n\n🏙️ Localidade: Salvador\n\n✅ Pagamento confirmado! Logo após a confirmação do pagamento, iremos ver como via funcionar a entrega.\n\nObrigado por escolher a NASH COMPANY! 🖤",
+    "status": "pending"
+  }
+]

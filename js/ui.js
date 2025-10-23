@@ -296,3 +296,5 @@ function startCountdown() {
 if (document.getElementById('promo-banner')) {
     startCountdown();
 }
+
+

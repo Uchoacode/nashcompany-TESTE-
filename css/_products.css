@@ -543,38 +543,45 @@
 .modal-content {
     background-color: #0a0a0a;
     border: 1px solid #222;
-    padding: 30px;
+    padding: 40px;
     width: 95%;
-    max-width: 600px;
-    max-height: 95vh;
+    max-width: 800px;
+    max-height: 90vh;
     overflow-y: auto;
     position: relative;
     transform: scale(0.9);
     transition: transform 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 .modal-overlay.active .modal-content {
     transform: scale(1);
 }
 .modal-content h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-weight: 700;
     border-bottom: 2px solid #555;
-    padding-bottom: 10px;
-}
-.modal-content h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    padding-bottom: 15px;
+    letter-spacing: 0.5px;
     color: #fff;
 }
-.modal-content p, .modal-content ul {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #ccc;
+.modal-content h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 25px;
     margin-bottom: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+.modal-content p, .modal-content ul {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #ddd;
+    margin-bottom: 20px;
+    font-weight: 400;
 }
 .modal-content strong {
     color: #fff;
@@ -582,21 +589,29 @@
 }
 .modal-close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.8rem;
     cursor: pointer;
     line-height: 1;
-    padding: 5px;
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
+    padding: 8px 12px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
     z-index: 10;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .modal-close-btn:hover {
     opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
 }
 .modal-content ul {
     padding-left: 20px;
@@ -611,52 +626,110 @@
     display: block;
     background-color: #25D366;
     color: #fff;
-    padding: 14px 20px;
-    margin-top: 30px;
-    border-radius: 5px;
+    padding: 18px 30px;
+    margin-top: 35px;
+    border-radius: 8px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+    transition: all 0.3s ease;
     text-decoration: none;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .modal-whatsapp-btn:hover {
     background-color: #1EAE54;
-    transform: scale(1.02);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
     opacity: 1;
 }
 
 .promo-popup-content {
     text-align: center;
-    padding-top: 40px;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 .promo-popup-logo {
-    width: 100px;
+    width: 120px;
     height: auto;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 30px auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 .promo-popup-subtitle {
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 .promo-popup-btn {
     background: #fff;
     color: #000;
-    margin-top: 25px;
+    margin-top: 30px;
+    padding: 18px 35px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
 }
 .promo-popup-btn:hover {
-    background: #ccc;
+    background: #f0f0f0;
     color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
 }
 .promo-popup-disclaimer {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #777;
-    margin-top: 15px;
+    margin-top: 20px;
     display: block;
+}
+
+/* --- Responsividade dos Modais --- */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 25px;
+        width: 98%;
+        max-width: none;
+        margin: 10px;
+    }
+    
+    .modal-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .modal-content h4 {
+        font-size: 1.1rem;
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .modal-content p, .modal-content ul {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .modal-whatsapp-btn {
+        padding: 16px 25px;
+        font-size: 0.95rem;
+    }
+    
+    .promo-popup-logo {
+        width: 100px;
+    }
+    
+    .promo-popup-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .promo-popup-btn {
+        padding: 16px 30px;
+        font-size: 1rem;
+    }
 }
 
 /* --- Botão Ver Detalhes --- */
