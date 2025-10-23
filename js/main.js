@@ -6,3 +6,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Os módulos cart.js e ui.js são carregados automaticamente
     // pois são incluídos no HTML antes deste arquivo
 });
+
