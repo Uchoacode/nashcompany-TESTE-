@@ -1,7 +1,8 @@
 // --- LÓGICA DO CARRINHO DE COMPRAS (GLOBAL) ---
 
-// Variáveis globais do carrinho
-let cart = JSON.parse(localStorage.getItem('nashCart')) || [];
+// Variável global do carrinho. Inicialmente vazia, o carregamento do localStorage
+// é feito na função loadAndRenderCart() para garantir a recarga em caso de bfcache.
+let cart = []; 
 const cartIconBtn = document.getElementById('cart-icon-btn');
 const miniCart = document.getElementById('mini-cart');
 const closeCartBtn = document.getElementById('close-cart-btn');
@@ -15,8 +16,16 @@ function saveCart() {
     localStorage.setItem('nashCart', JSON.stringify(cart));
 }
 
+// Função para carregar o carrinho do LocalStorage e renderizar o UI
+// ESSENCIAL para corrigir o problema de navegação (bfcache).
+function loadAndRenderCart() {
+    cart = JSON.parse(localStorage.getItem('nashCart')) || []; // Reatribui a variável global com o estado mais recente
+    renderCart(); // Renderiza a UI com o estado recém-carregado
+}
+
 // Função para atualizar o subtotal
 function updateSubtotal() {
+    // A função utiliza a variável global 'cart' que deve estar atualizada
     const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     if (cartSubtotalEl) {
         cartSubtotalEl.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
@@ -244,7 +253,11 @@ document.addEventListener('DOMContentLoaded', function() {
         checkoutBtn.addEventListener('click', handleCheckout);
     }
 
-    // 5. Carregamento inicial do carrinho em TODAS as páginas
-    renderCart();
-    // updateCartBadge() é chamado dentro de renderCart()
+    // A chamada de loadAndRenderCart() agora está no final
 });
+
+// 5. Carregamento inicial do carrinho em TODAS as páginas
+// Chamado no DOMContentLoaded para a primeira carga.
+// E também chamado no 'pageshow' para lidar com a navegação de retorno (bfcache).
+document.addEventListener('DOMContentLoaded', loadAndRenderCart);
+window.addEventListener('pageshow', loadAndRenderCart);
